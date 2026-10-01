@@ -1,0 +1,3 @@
+Wylan Araykos is a member of [[The League of Friendship]] and, later, the [[Founders]]. Wylan grew up in [[Ayuma]] and quickly gained fame amongst his adventures with the League of Friendship. Wylan became an excellent captain of the famous [[Cloudsong]]. Wylan would later go on to fight against [[Drokai]] in the [[Tenday of Ash]]. 
+
+Wylan was admitted to [[The League of All-Stars]] as one of the first [[Exemplars]]. He married the now deceased [[Captain Coriander]] and adopted many children throughout his life, the most famous of which being [[Orpheus]].

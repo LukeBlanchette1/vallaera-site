@@ -1,0 +1,1 @@
+Out of the [[Continents]], Ayuma is the continent of craftsmen. The most skilled Dwarven smiths and engineers come from Ayuma. Ayumian craftsmanship is sought after across the world as their magical items are like no other. While other continents in the world have the propensity to create magical items, none do it like Ayuma. 
