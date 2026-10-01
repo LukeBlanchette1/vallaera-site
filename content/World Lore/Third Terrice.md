@@ -1,0 +1,1 @@
+The Third Terrice is the current era the world is in. There are three Terrices total in the [[Terric Ages]]. It started at year 0 after the [[Tenday of Ash]]. Years in the Third Terrice are followed by an AD (after Drokai) to denote those years are part of the Third Terrice.

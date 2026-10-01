@@ -1,0 +1,1 @@
+$\quad$An Aarakocra man that is always on the hunt for the next big scoop. He is the founder and lead reporter of The Coop, a paper that reports on the events of Vallaera. J.J. Coopers is known to work for himself and the love of the scoop. He is anywhere that important events unfold and reliably reports what he sees. 

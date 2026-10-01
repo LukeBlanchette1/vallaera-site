@@ -1,0 +1,1 @@
+One of the [[Hierophants]] of the [[Topaz Circle]]. Her twin brother is [[Enki]]. She lives in [[Talurot]]. She died in the Sacrosanct Raid of Talurot and was reincarnated as a drow.

@@ -1,0 +1,1 @@
+Renwick's home city, located in [[Al-Djazair]].

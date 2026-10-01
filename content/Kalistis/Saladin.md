@@ -1,0 +1,1 @@
+1. General Saladin Qalib, "The Red Hawk", is the leader of the [[Military Faction]] of the Effranian Civil War. He is said to be the best swordsman of his generation. Renwick knows that he leads the Military Faction from the city of Ekedpolis, although he is known to be present on the battlefield as well.

@@ -1,0 +1,1 @@
+Capital of the [[Senatorial Faction]]. It is the green circle on the [[Important Map]] and the suspected epicenter of [[Xhimdal's Kiss]]

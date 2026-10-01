@@ -1,0 +1,1 @@
+Malvita Mourns is a legendary enchantress currently living in [[Springshade]]. She is a member of [[The League of All-Stars]] and the [[Cloaks of Maka]]. She is a resident of [[Numi no Kuni]] in [[Motu]]. She has recently temporarily relocated to [[Anatha]] on behalf of [[Orpheus]], although the exact reasoning why is unknown to the general public.

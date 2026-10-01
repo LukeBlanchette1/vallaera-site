@@ -1,0 +1,1 @@
+Commemorates the end of the [[Princely Wars]] liberating the [[Mondisi Emirate]], the [[Safazar Sultanate]], and the [[Dwarven Union]] from the [[Effranian Empire]].

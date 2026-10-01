@@ -1,0 +1,1 @@
+Minx was the pet of [[Valza Nethrani]]. She is a jackal that Valza found infected with [[Surakh Aljad]] while traveling with [[The Golden Sands]]. Minx traveled with the party until Valza's arrest by the [[Senatorial Faction]]. After this, Minx departed to make a new life for herself.

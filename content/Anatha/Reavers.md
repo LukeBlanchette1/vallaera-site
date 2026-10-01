@@ -1,0 +1,3 @@
+The Reavers are a [[Warbands|warband]] led by [[Shak'Maati]]. They mostly reside in the eastern portion of [[Huldar's Reach]].
+
+The Reavers prefer to ambush unsuspecting passerby. They often torment and torture them on the roadside before killing them. The Reavers revel in the misery of others; sometimes the group will intercept a wagon, kill all the children, and let the parents live just to watch them suffer. Othertimes they force their victims to fight each other to the death, letting the winner survive. They are by far the most sadistic of all the warbands.

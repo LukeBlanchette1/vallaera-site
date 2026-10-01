@@ -1,0 +1,4 @@
+# Overview
+The Thescryan Empire ruled over the modern lands of [[Séllur]] and [[Sacred Lands of Gainier]] from its inception by [[The Hierarch]] in 220 until its fall during the [[Petaled Revolution]] in [[Séllurian History|384.]] The Thescryan Empire's rule is remembered as completely draconian and stifling. The Hierarch ruled with an iron fist and saw the people of her empire as test subjects. The Thescryan Empire used a strict caste system where those deemed strong by The Hierarch were afforded more privileges and better positions in life. This cultural framework helped inform the modern system of Séllur's Noble [[Houses of Séllur|Houses]].
+
+The only things that remain of the Thescryan Empire are ruins scattered around Séllur. Rarely, some Thescryan artifacts have been uncovered still holding Thescryan magic that has been lost to time. 

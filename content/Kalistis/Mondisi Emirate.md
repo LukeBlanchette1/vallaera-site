@@ -1,0 +1,1 @@
+Currently ruled by [[Emir Tesan]] with a brother [[Tahrir]] who is a prophet. He's had big visions of plagues and the world shaking. The Emir has opened his palace to the [[Topaz Circle]].

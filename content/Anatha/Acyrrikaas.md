@@ -1,0 +1,1 @@
+Acyrrikaas is the fearsome and mighty adult red dragon that lives at the top of [[Mt. Aleta]] in [[Dragonskeep]]. The people of Dragonskeep worship him like a diety, frequently bringing him offering to appease him.

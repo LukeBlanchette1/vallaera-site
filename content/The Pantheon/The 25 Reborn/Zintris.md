@@ -1,0 +1,1 @@
+Zintris the God of Time, a foreboding being who manifests as an older version of the one who observes Him. Associated with the symbol of a Three Equidistant Lines Originating from a Single Point and a Moth.

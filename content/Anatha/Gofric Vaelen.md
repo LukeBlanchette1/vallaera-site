@@ -1,0 +1,5 @@
+King Gofric Vaelen rules over all of [[Thalrune]]. His hair went gray long ago, but he still has the commanding demeanor of his younger self. King Gofric's firm demeanor makes it challenging to sway his views once his mind is set. His rule has been unproblematic up until recently, with the [[Sovereign Conflict]] dividing opinions on him.
+
+King Gofric was, interestingly, not born into royalty. He was a renowned knight and member of the royal guard for the King. He was assigned to the prince's personal detail, and the two were very close friends. When the prince and his mother died of an incurable disease, the king was left without an heir. Gofric was taken in by the King like a second son, and when the king grew old, he passed the crown on to Gofric. While this wasn't questioned at the time, accusations and rumors have recently emerged about the suspicious nature of the inheritance, as tensions grow between the [[Assimilists]] and the [[Unionists]].
+
+King Gofric wields the legendary weapon [[Cold Sympathy]].

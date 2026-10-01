@@ -1,0 +1,6 @@
+# Overview
+Wavespeaker Kynric was the [[Séllurian Species & Culture|Sea Elf]] General that led the [[Moondrop Rebellion]] in 609. Not much is known of Kynric's life before his selection as Wavespeaker in 581. Wavespeaker is a title said to be granted by [[Sinnan]], a mythological being of great spiritual importance to the aquatic races. 
+
+Before Kynric, Wavespeaker was a largely spiritual and ceremonial role as the closest mortal connection to the great god of the seas and the goddess of the moon. Kynric instead used his position as Wavespeaker to stand up for the aquatic subjects of Séllur.
+
+He was a formidable military commander and warrior in his own right. During the Moondrop Rebellion he had the respect of all of the [[Darkwave Bay]]. When the Rebellion seemed lost, Kynric unleashed a curse upon the waters of the Darkwave Bay as a last ditch effort to defeat the Séllurian forces. He used his position as Wavespeaker to unleash monsters and seabeasts from the abyss who are around even today. 

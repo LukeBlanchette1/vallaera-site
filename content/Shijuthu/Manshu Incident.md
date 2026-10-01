@@ -1,0 +1,1 @@
+A tragic expedition led by [[Swindle]] of [[The League of All-Stars]] into the [[Enraki Shogunate]]. Here, many [[All-Stars]] were executed and countless people lost their lives.

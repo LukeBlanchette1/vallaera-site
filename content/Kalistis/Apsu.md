@@ -1,0 +1,1 @@
+One of the [[Hierophants]] of the [[Topaz Circle]]. She lives in [[Talurot]].

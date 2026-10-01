@@ -1,0 +1,1 @@
+Miantha the Goddess of Blood, a strategic and power-hungry vampire. “The Mother of Vampires”. Associated with the symbol of a Droplet of Blood and a Bat. 

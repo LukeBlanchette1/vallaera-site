@@ -1,0 +1,3 @@
+The Glittering Festival is a new celebration that commemorates the day [[Golden Sands]] defeated [[Salvation]] and freed The Wastes from the withering grip of disease. It originated in [[Mondisi Emirate]] but quickly spread throughout all of the northern nations. 
+
+The festival itself involves decorating streets of towns with glittering golden lights, strings, and small paper spheres filled with golden powder. The paper spheres are painted with different designs and hung around the streets, most often depicting stars or the sun. At the 7th hour, when the sun sets, the paper spheres are broken to let the golden powder out. Most often this is done by the children and is accompanied by lots of food and drinking throughout the night. 

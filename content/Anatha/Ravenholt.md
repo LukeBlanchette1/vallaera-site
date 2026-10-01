@@ -1,0 +1,3 @@
+Ravenholt is located in [[Thalrune]] and is part of [[The Holt]].
+
+**Ravenholt** is nestled in between tall mountains and creepy trees. It often floods because of runoff, leaving areas wet and marshy. This area is gothic and eerie. Villagers tell countless stories of the shadowy figures and terrifying beasts that lurk in the woods at night. It often floods because of runoff, leaving areas wet and marshy. [[Stoutfoot Grey]] is known to prowl the woods of Ravenholt with his gang of werewolves.

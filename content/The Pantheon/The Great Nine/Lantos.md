@@ -1,0 +1,1 @@
+Lantos the God of the Ocean, a temperamental, finicky yet charismatic being. He’s particularly known for his strong will, never deterring from his goals.  Associated with the symbol of Three Raindrops, an Eel and a Kraken. 

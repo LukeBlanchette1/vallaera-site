@@ -1,0 +1,9 @@
+Myrkhans are a race of powerful humanoids thought to be from the [[Shadowfell]]. While their exact origin is unknown, the leading theory is that the myrkhans made their way into the Material Plane during the [[Autumn Equinox]]. 
+
+Myrkhan anatomy differs a lot from the anatomy of most other humanoids. The average myrkhan is around 6'6, meaning they tower over most other races. The average lifespan of a myrkhan is around 120 years. Myrkhans are known for reproducing asexually. Once a myrkhan reaches maturity at 20, their body will produce a second set of internal organs: four lungs, two stomachs, two hearts, even two brains! When a myrkhan's second set of organs are roughly halfway to full size, the myrkhan will divide, splitting off the new set of their organs into a smaller, childlike myrkhan. It takes a myrkhan around 5 years to regrow their organs, and a myrkhan will typically divide three times during their life. 
+
+Whenever a myrkhan beats a particularly powerful foe, they will often cut off a piece of that foe's body and graft it to their chest. Then their body will incorporate that DNA into their body, and when they next divide, will pass on some of the traits to their offspring. While a grotesque practice, over centuries it has led the myrkhans to become the physical powerhouses they are.
+
+Myrkhans are blind, with flesh covering their eye sockets. As a result, they have developed blind sight and tremorsense to see their surroundings. Myrkhans have very precise echolocation skills, and their sense of touch is advanced enough to detect changes in airflow, granting them equal, if not better, forms of sight. Myrkhans will typically wear metallic face coverings that enhance their echolocation abilities, as well as serving aesthetic purposes.
+
+The most famous of the myrkhans is General [[Zinfir]] of [[Vance]].

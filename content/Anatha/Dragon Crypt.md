@@ -1,0 +1,2 @@
+When a dragon approaches the end of its lifespan, it will create a Dragon Crpyt, an elaborate resting place for its remains. Each Dragon Crypt is guarded by a [[Wyrmlord]]. Inside the crypt is the dragon's remains, perfectly preserved. There is also a [[Tablets of Creation|Tablet of Creation]] inscribed with the dragon's draconic boon written in [[Eldertongue]]. As the dragon died naturally, it did not get the chance to pass on its boon. As a result, it transcribed the boon into the tablet. Anyone who can read Eldertongue is able to gain the boon.
+

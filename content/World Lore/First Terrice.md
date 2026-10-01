@@ -1,0 +1,1 @@
+The First Terrice is the era of time from the beginning of human history up until 0 BYO (or year 0). It is one of three [[Terric Ages]].

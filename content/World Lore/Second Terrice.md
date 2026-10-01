@@ -1,0 +1,1 @@
+The Second Terrice was ended after the [[Tenday of Ash]] and led into the [[Third Terrice]].

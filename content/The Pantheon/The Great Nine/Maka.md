@@ -1,0 +1,1 @@
+Maka the Goddess of Magic, a regal and mysterious being. She is often preoccupied and is rarely seen aiding mortals or anyone else for that matter. Associated with the symbol of a Hand with Pointer and Middle Finger Extended and a Doe. 

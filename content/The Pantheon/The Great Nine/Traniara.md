@@ -1,0 +1,1 @@
+Traniara the Goddess of Death, a kind, quiet, and straightforward woman of Divinity. She maintains the balance between life and death in Vallaera. Associated with the symbol of a Skull and A Crow.

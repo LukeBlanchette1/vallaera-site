@@ -1,0 +1,1 @@
+Velerion is the Archmage and ruler of the [[High Republic]]. He, along with [[Wynna Tyvertrout]], defeated [[Corinth the Mad]] when she attacked the High Republic.

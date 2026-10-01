@@ -1,0 +1,1 @@
+Luminus the God of Life, Fertility and Youth who is youthful, fun and good-natured. His domain is said to be a sunny field of marigolds with tall trees, ziplines, and parks. Associated with the symbol of a Sunrise and a Dog

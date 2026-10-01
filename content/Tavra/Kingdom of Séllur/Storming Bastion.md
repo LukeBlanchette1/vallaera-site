@@ -1,0 +1,2 @@
+# Overview
+The Storming Bastion is the greatest fortress in all of [[Séllur]]. The bastion was originally a [[Thescryan Empire|Thescryan]] castle but was turned into a thriving fortress by House [[Coucher]]. The Bastion is surrounding by a never ending storm and poses the greatest deterrence to any invasion by the [[Sacred Lands of Gainier]]. Maintaining the bastion's integrity is widely considered to be incredibly important but the recent inflamation of the Coucher and [[Midinet]] rivalry has drawn many resources away.

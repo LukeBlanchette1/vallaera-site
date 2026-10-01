@@ -1,0 +1,1 @@
+A Wyrmlord guards a [[Dragon Crypt]], a burial site for an ancient dragon. They are undead, undying servants of the dragon they protect, and will attack any creatures on sight within the Crypt. These knights are adorned with black adamantine armor, and wear draconic masks covering their undead faces. Each Wyrmlord has a unique weapon, a gift from the dragon they served. 

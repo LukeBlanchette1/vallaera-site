@@ -1,0 +1,1 @@
+Vallaera is the name of the universe in which these notes are dedicated to. It is part of the Material Plane, and contains 10 [[Continents]] of great importance. It is heavily influenced by the actions of [[Adventuring Parties]] and their roles in [[Campaigns]].

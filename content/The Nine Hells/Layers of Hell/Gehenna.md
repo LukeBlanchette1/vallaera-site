@@ -1,0 +1,1 @@
+In the [[The Nine Hells]], Gehenna is the layer of [[Asmodeus]]. Gehenna is eerily silent, dark, empty except for Asmodeus’s palace glowing in the darkness. Asmodeus is the only being that resides on this plane.

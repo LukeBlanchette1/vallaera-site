@@ -1,0 +1,3 @@
+The site of an ancient ritual site at the top of a mountain peak in [[Ravenholt]]. It is considered demonic and cultish, and it is the height of taboo for travelers to head there. Many that went near it have gone missing, so most travelers give the site a wide berth.
+
+The site originated in 22 AD, when [[Xalthalok]] made a full manifestation on the peak. There are no records of exactly what happened during the manifestation, but the final death toll reached over one thousand souls lost. The first people to reach the site described seeing a mass of skinless bodies, limbs outstretched, forming an obelisk at the top of the peak. The exact purpose of the obelisk is still unknown. From that point onwards, Morrow's Peak was a cursed site.

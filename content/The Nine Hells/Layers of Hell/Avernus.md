@@ -1,0 +1,1 @@
+In the [[The Nine Hells]], Avernus is the layer of betrayal. Avernus is a classic hellish wasteland spotted with cities and civilizations across its flaming red landscape. The plane is ruled by the [[Archdevils|Archdevil]] [[Zariel]] and the [[Demon Lords|Demon Lord]] [[Orcus]].

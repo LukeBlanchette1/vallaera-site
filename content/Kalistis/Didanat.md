@@ -1,0 +1,1 @@
+The mother of [[Osiris Ramunset]] and [[Anubis Ramunset]]. She  is married to [[Kuvat]] Ramunset. She is a weaver.

@@ -1,0 +1,1 @@
+Drana the Goddess of the Moon, a wise but old Lady who has long since lost her sparkle. Associated with the symbol of a Moon and a Fish. 

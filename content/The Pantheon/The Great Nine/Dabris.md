@@ -1,0 +1,1 @@
+Dabris the God of Darkness and Nightmares, the incarnation of evil and considered the “Darkness Devil”. Associated with the symbol of a Many Armed Entity and a Panther.

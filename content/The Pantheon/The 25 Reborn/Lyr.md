@@ -1,0 +1,1 @@
+Lyr the Goddess of Art, an aspiring creator of all kinds, who seeks the attention of any who appreciates any of the arts and will even aid aspiring artists. Associated with the symbol of a Harp and a Songbird.

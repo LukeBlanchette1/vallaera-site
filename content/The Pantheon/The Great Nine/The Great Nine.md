@@ -1,0 +1,10 @@
+The Great Nine consists of:
+[[Kyros]]
+[[Luminus]]
+[[Iridyon]]
+[[Traniara]]
+[[Dabris]]
+[[Maka]]
+[[Lantos]]
+[[Vo'ak]]
+[[Alinila]]

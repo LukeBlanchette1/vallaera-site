@@ -1,0 +1,3 @@
+The Colossus of Shavteus is a titanic automaton that, according to legend, was left in [[Anatha]] after [[Kyros]] issued the [[Divine Mandate]]. 
+
+The Colossus has long ago rusted into disrepair, but scavengers still make their way through its internal components, salvaging pieces of metal and scraps to melt into tools and gear. It is said that [[Sammy]] took many of the most potent pieces of technology from the Colossus and brought it to his personal workshop. 

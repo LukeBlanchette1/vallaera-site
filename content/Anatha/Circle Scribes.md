@@ -1,0 +1,5 @@
+Circle scribes are dedicated spellcasters devoted solely to mastery of the *teleportation circle* spell. They mostly study at the [[College of Heralds]] in [[Elderspire]], but there are also two smaller colleges in [[Hearthfall]] and [[Varghold]]: the [[College of Hearthfall]] and the [[Varghold Academy]], respectively. 
+
+Circle scribes can typically only cast 1st and sometimes 2nd level spells, as their expertise is highly specialized in teleportation circles. Those that become circle scribes make excellent money with cushy jobs within the capital cities of [[Anatha]]. Circle scribes offer their services to the public, but they are quite pricey. They can generally only be afforded by adventurers, nobles, and wealthy merchants.
+
+It is against international law to use a teleportation circle to cross national borders without permission by a regional governance. Thus, circle scribes will not allow travelers to teleport to circles outside of [[Thalrune]], despite often knowing the sigils to circles in different nations.

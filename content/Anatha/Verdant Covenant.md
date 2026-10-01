@@ -1,0 +1,3 @@
+The Verdant Covenant is a group of kind-hearted druids, seeking to protect and restore nature throughout Thalrune. Many consider them radicals, but others proclaim that they are preserving the natural beauty of Thalrune. The Verdant Covenant are luddites who prohibit many technological innovations in favor of more natural alternatives. They believe magic is the true means of progress, and using mechanations detracts from this.
+
+Their leader, [[Sylvine]], has been slowly accruing more members to their conclave. The Verdant Covenant lives in the [[Eldertree]], a centuries old tree with a spiritual connection to all its inhabitants.

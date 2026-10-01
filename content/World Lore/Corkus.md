@@ -1,0 +1,1 @@
+Out of the [[Continents]], Corkus is the continent of warforged. It hosts factories that produce warforged day in and day out. It also supplies some of the rarest metals in the world, as it is built on top of a massive adamantine meteor.

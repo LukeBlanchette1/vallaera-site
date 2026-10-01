@@ -1,0 +1,1 @@
+Located in [[Talurot]], it is where [[Tahrir]]'s body is being held. It gives off vaguely similar vibes to [[Freeman]]. 

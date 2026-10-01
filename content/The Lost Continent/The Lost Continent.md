@@ -1,0 +1,1 @@
+Out of the [[Continents]], not much is known about The Lost Continent. Approaching the Lost Continent, sailors see what seems to be a great waterfall, emptying into a vast cavern within Vallaera. Only the most daring adventurers have braved the Lost Continent and almost none have come back. It is known as the most dangerous place in all of Vallaera.

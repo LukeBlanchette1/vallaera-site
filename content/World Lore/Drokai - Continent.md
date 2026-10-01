@@ -1,0 +1,5 @@
+The [[Continents|continent]] of Drokai was a harsh, volcanic wasteland in the southwest of [[Vallaera]]. It had a massive supervolcano underneath it. It was where [[The Lost Continent]] is in present day. 
+
+When [[Saint Motun]] imprisoned the demigod [[Drokai]] in the seafloor, bits of Drokai's divine energy would leak out. Over millenia, this created volcanoes that erupted and formed the continent of Drokai, with the demigod imprisoned deep in the center of it. 
+
+The continent was destroyed when Drokai was released from his prison. The eruption shook the entire world, and the debris swallowed up over half of all landmass. Now, all that remains is a colossal crater in the ocean, a hole that swallows anything that approaches it. Some have alleged that there is a whole continent at the bottom of it, full of powerful monsters and exceptional loot. This hole has been given the name [[The Lost Continent]].

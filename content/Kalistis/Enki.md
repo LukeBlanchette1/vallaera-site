@@ -1,0 +1,1 @@
+One of the [[Hierophants]] of the [[Topaz Circle]]. His twin sister is [[Enlil]]. [[Bast Petra|Bast]] has a crush on him. He lives in [[Talurot]].

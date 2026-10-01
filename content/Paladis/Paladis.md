@@ -1,0 +1,1 @@
+Out of the [[Continents]], Paladis is the continent of knowledge. Paladis hosts a big concentration of magic users and universities catered to them. Disciplines such as Graviturgy are exclusively taught in the halls of Paladian universities. Some of the world’s best magic users hail from the lands of Paladis. 

@@ -1,0 +1,1 @@
+The father of [[Osiris Ramunset]] and [[Anubis Ramunset]]. He is married to [[Didanat]] Ramunset. He was a warrior in his youth, and now he is a blacksmith.

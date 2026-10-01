@@ -1,0 +1,1 @@
+Damron the God of Deceit, a cunning and deceptive Divine creature who masks himself as other Gods. Associated with the symbol of Crossed Fingers and a Cuckoo Bird.

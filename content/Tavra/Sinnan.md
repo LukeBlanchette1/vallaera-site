@@ -1,0 +1,1 @@
+Mythological figure said the be the daughter of [[Séllurian Pantheon|Lantos and Drana]]

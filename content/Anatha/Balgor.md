@@ -1,0 +1,1 @@
+Balgor is a [[Hollows|Hollow]] and the founder of the [[Vultures]]. He is one of the most wanted criminals in the [[Bounty Book]].

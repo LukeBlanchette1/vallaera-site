@@ -1,0 +1,4 @@
+# Overview
+The Dragon's Maw is a daunting collection of trials that one must brave in order to be named a [[Seven Orders|Flamewreathed Knight]] and serve House [[Marleau]]. [[Blooming Blades|Thaselot]] is credited with its creation but legends say it's winding structure was once an elder wyrm's skeleton and dates back to the time of the [[Thescryan Empire]].
+
+The Flamewreathed Knights that have survived the trials are sworn to never share the secrets of the Dragon's Maw with anyone outside the order. These trials are considered a major contributor to the Flamewreathed Order's extraordinary discipline. The Dragon's Maw is also what gives the Flamewreathed Order their unique affinity with flame. 

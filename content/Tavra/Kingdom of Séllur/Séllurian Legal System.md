@@ -1,0 +1,20 @@
+# Crown & Ducal Laws
+There are two different kinds of laws in Séllur which are known as Crown and Ducal laws. Crown Laws are passed by the [[Primrose Council]] with approval by the monarch. These laws apply to all of Séllur with little to no exceptions. There are very few Crown Laws due to the difficulty of passing a law that is fair across the diverse kingdom.
+
+Ducal Laws are laws that only apply within the duchy. These are passed by the ruler of the Duchy with only the monarch being able to veto them. These laws are more focused and can be put into place quicker than Crown Laws. With [[Josette Jacquemond I|Queen Josette]] now asleep, there is no monarch's veto to prevent the flurry of Ducal Laws recently put into place. 
+# Levels of Court
+**Municipal**
+- Municipal Courts are for local crimes like stealing, vandalism, brigandry or arbitrate divorces and inheritance. A Municipal Court exists in every city and serves the surrounding settlements. The Municipal Courts are managed by a (NAME PENDING) who is an ordained servant of [[Kyros]]. These (NAME PENDING) are named by the Count of that holding and serve for life.
+**Ducal**
+- Ducal Courts are for high level crimes and the enforcement of Ducal laws. Ducal Courts are operated by the ruler of the Duchy or their representative. They deal with crimes like murder, unsanctioned worship of the [[Séllurian Pantheon|Moonlit Gods]], destruction of noble property, etc. In general the Ducal courts are often sever. 
+**Crown**
+- The Crown Court is for the highest level of offenders in Séllur. This can range from treason, to serial killing, to assassinations. The Crown Court is presided by only the Monarch or their spouse. Cases that reach the Crown Court are somewhat rare, with only around 10 being judged each year. There are not very many cases in the Crown Court that don't end in death or banishment.
+# Magistrates
+Magistrates are magic users that work for The Kingdom of [[Séllur]]. They are a specialized force meant to deal with magic users that commit crimes and enforce the laws that only apply to mages. The Magistrate institution is the largest employer of magic users in Séllur, often offering scholarships to promising students in exchange for their membership. Magistrates are an essential piece of the Séllurian governmental system because they handle local criminals that average guards cannot. 
+
+Each County has an Primo Magistrate that is named by the Count and commands that county's magistrates. Each County's magistrate is then beholden to the Archmagistrate that serves in Bosquia. The goal is for each town to have atleast one magistrate but with the recent times of trouble in Séllur that has proved impossible. 
+# The Primrose Concordat
+The Primrose Concordat was signed shortly after the [[Petaled Revolution]]. The Concordat solidified the Houses that would become the [[Houses of Séllur|Lesser Houses]] as part of Séllur. The Concordat creates the Primrose Council that has a say in Séllur. This was fair when there were only 4 Houses in Séllur, but when the Greater Houses joined Séllur it utterly changed the dynamic. The Greater Houses did not sign the Concordat, meaning that they were not unable to rule more than two counties, passing their own laws, etc. While the Concordat was successful in creating a powerful council, it failed to adapt to the changing Séllurian power dynamic and left the Lesser Houses out to dry.
+
+# The Crown's Protection
+One of the original Crown Laws of Séllur, the Crown's Protection makes killing a member of a noble house a capital offense. While murder is already heavily punished, killing a noble is an immediate death sentence no matter the context. Only the monarch can intervene in this law, which is impossible in the current era with [[Josette Jacquemond I|Queen Josette]] asleep. This law is the sole reason that nobles cannot be executed in any case. 

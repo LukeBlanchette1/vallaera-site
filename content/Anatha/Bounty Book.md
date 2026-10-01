@@ -1,0 +1,1 @@
+Here is the bounty book for Thalrune: https://docs.google.com/document/d/1QUQw7IpRKnjmMBRMhXWEyXeQRNZjt1ee0aNzKWNfdpY/edit?usp=sharing

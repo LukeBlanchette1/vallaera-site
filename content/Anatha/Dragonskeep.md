@@ -1,0 +1,3 @@
+Dragonskeep is located in [[Thalrune]] and is part of [[The Moor]].
+
+**Dragonskeep** is located to the Northeast, surrounding [[Mt. Aleta]]. It is snowy and rocky, and most of Dragonskeep lives independently from the rest of Thalrune. Dangerous monsters and powerful warbands roam the thick blizzards. [[Acyrrikaas]], the legendary red dragon, lives at the peak of Mt. Aleta. The residents of Dragonskeep worship him like a diety and often bring large offerings to his lair to appease him. The [[Dragon Crypt]] of [[Gohrvakul]] is known to be in this area, although none have found it. Or none have found it and lived to tell others... 

@@ -1,0 +1,5 @@
+Brown Circle: [[Bahtur]], [[Stirge Pox]]
+Blue Circle: [[Shabak]], [[Surakh Aljad]], [[The Doctor]]
+Orange Circle: [[Talurot]], [[Efferant Delirium]], [[The Pianist]]
+Green Circle: [[En-Rafun]], [[Xhimdal's Kiss]]
+Red Circle: [[Yakpolis]], [[Red Rot]]

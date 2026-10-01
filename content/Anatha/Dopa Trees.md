@@ -1,0 +1,3 @@
+The myth states that when [[Sosha]]'s domain was set ablaze by [[Chubbyam]] during a spat between gods, Sosha wept six singular tears, which fell all the way down to the material plane. These tears landed on the earth, and from them sprouted the six gargantuan Dopa Trees. The Dopa Tree of Thalrune was a colossal willow tree that could dwarf mountains. 
+
+Most of the Dopa Trees were destroyed in the [[Tenday of Ash]], though the trees in Tavra and Kalistis remain. While the Dopa Tree of Thalrune was mostly burnt down, its stump remains. [[The Quills]] live within it.

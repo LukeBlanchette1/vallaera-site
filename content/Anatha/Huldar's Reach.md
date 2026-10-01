@@ -1,0 +1,3 @@
+Huldar's Reach is located in [[Thalrune]] and is part of [[The Holt]].
+
+**Huldar's Reach** is mountainous, and elevation is high here. The mountains provide a ring of natural protection to the inner "haven" of Huldar's Reach. Inside the mountains is a lush and vibrant forest. Towns are scattered throughout the elevation, but the cities are all located inside the mountains. There is a secluded elven city located further deeper into the mountains, past Huldar's Reach. The [[Colossus of Shavteus]] is located here.

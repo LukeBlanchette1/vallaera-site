@@ -1,0 +1,1 @@
+Edward Thurston is Lord of [[Ravenholt]] and a member of the [[Swords of Shuss]].

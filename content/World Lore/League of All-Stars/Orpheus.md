@@ -1,0 +1,1 @@
+Orpheus is the current leader of [[The League of All-Stars]]. He was the protege of [[Enzio Kerrigan]] and the adopted son of [[Wylan Araykos]]. He leads the [[Exemplars|Exemplars]] and the other [[All-Stars]], and is their direct commander.

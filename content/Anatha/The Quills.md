@@ -1,0 +1,3 @@
+Scholars of [[Notios]] that are [[Anatha]]'s premier historians. They collect relics and old documents and transcribe them into their records. Anatha does not traditionally value record-keeping and preserving documents, and so much of Anatha's history has been lost to time. The Quills have stepped in to save as much of this history from being lost to time.
+
+They reside in [[Hearthfall]], in the ruins of the old [[Dopa Trees]].

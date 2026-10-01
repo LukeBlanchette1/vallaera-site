@@ -1,0 +1,1 @@
+A rite made by [[Da'Iman]] that would require you to put sand in your veins. It supposedly brought one closer to [[The Wastes]], but few were said to survive it.

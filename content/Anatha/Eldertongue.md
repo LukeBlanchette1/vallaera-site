@@ -1,0 +1,1 @@
+The language of ancient dragons. It is a long lost art of speaking, even closely guarded amongst dragons. The [[Tablets of Creation]] in [[Dragon Crypt]]s are written in Eldertongue.

@@ -1,0 +1,1 @@
+Freeman is [[Frida Wilde|Frida]]'s brother and an experiment of [[The Doctor]]. He is known as the "perfect vessel" and is most likely being used to host a powerful entity. He sometimes hears voices calling to him.

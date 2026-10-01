@@ -1,0 +1,3 @@
+The Marauders are a [[Warbands|warband]] led by [[Killian Overbeck]], residing mostly in the northwestern portion of [[Huldar's Reach]].
+
+They prefer to raid high class establishments, kidnap wealthy nobles, or other profitable hunts. They often fade out of public eyes for months at a time before striking at the perfect time to score millions in gold. The group is mostly focused on earning money, and while they have no qualms with killing, they don't torture or maim unnecessarily, as the [[Reavers]] do. 

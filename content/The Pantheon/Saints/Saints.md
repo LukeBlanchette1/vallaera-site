@@ -1,0 +1,1 @@
+The Saints were beings created to clean up the mess of the [[Purgation]] and have since ascended to Sainthood, becoming patrons to their respected concepts.

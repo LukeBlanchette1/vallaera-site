@@ -1,0 +1,1 @@
+The archdruid of the [[Topaz Circle]]. She lives in [[Talurot]].

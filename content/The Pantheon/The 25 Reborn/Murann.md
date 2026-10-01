@@ -1,0 +1,1 @@
+Murann the Goddess of Dreams and Prophecies, the young assistant of Alinila. She’s known to become attached to mortals in the material planes and create problems amongst the Pantheon, particularly Murann. Associated with the symbol of a Wispy Cloud and a Koala. 

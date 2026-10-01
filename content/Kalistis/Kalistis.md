@@ -1,0 +1,1 @@
+Out of the [[Continents]], Kalistis is the desert continent of the arts. Some of the world’s best painters and sculptors come from the lands of Kalistis. Kalistis is known for its unique wildlife. The creatures of Kalistis are popular warbeasts sought after across the world to fight in whatever conflicts they are needed in.

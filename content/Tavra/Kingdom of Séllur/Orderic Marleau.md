@@ -1,0 +1,6 @@
+> "*I found him trying to sneak away to the training grounds again. I doubt he has yet accepted his prime is far behind him. I'm inclined to let him slip away next time, if only to let him pull a muscle and come back limping. Some lessons can only be taught through experience.*"
+> *- Excerpt from a letter from Daliah Marleau to Sir Henri Marleau*
+# Overview
+The current Count of [[Crownlands|Murufort]], the title that makes him the traditional head of House [[Marleau]]. Count Orderic is the uncle of Count Theodoric, Sir Henri, and Daliah Marleau who serve diligently on the [[Primrose Council]]. Count Orderic had a reputation for being a seasoned adventurer and traveler before assuming his more sedentary role as Count. His "Hall of Monsters" is famous for his collection of trophies from the various creature's he's slain. He has never married nor had any children. 
+
+Orderic is known across Séllur as a friendly and honrable man. He has made it clear that he believes House Marleau's position as a Lesser House can be bridged through honorable service and dedication to the kingdom. 

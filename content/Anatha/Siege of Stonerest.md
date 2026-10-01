@@ -1,0 +1,1 @@
+The legendary battle between [[The League of All-Stars]] and General [[Zinfir]] and [[Vance]]. It resulted in the death of Zinfir and the collapse of Vance's empire.

@@ -1,0 +1,1 @@
+Prophet and brother of [[Emir Tesan]]. He has had visions of [[The Five Plagues]]. He is in a coma. He gave the prophecy related to [[The Golden Sands]]. 

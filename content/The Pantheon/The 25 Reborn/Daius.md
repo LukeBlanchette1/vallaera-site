@@ -1,0 +1,1 @@
+Daius the God of Strength, a mighty, charismatic and dominant being with a great sense of pride. Associated with the symbol of a Fist and a Bear.

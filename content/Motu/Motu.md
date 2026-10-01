@@ -1,0 +1,1 @@
+Out of the [[Continents]], Motu is the continent of seafarers. Motu’s central location makes it a huge hub for trade across the oceans. Motu is known to deal with various incursions of pirates but otherwise remains a merchant’s dream. Motu made ships are known to be stronger and faster than any other vessels and their ordinance is unparalleled on the seas.

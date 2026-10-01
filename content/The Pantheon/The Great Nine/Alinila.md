@@ -1,0 +1,1 @@
+Alinila the Goddess of Destiny, an eccentric Goddess in charge of the fates of all, weaving them in her loom. Associated with the symbol of a Silk Spool and a Spider.

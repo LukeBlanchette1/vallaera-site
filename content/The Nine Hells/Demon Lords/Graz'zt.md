@@ -1,0 +1,1 @@
+Graz'zt was the shadow antagonist of the [[Paladis-OG]] campaign. He manipulated [[Dariel]] into taking over [[Paladis]]. He also appeared in the [[Tenday of Ash]] to fight the [[Founders]] when [[Castellia]] summoned forth several [[Demon Lords]] to take over the Material Plane.

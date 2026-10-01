@@ -1,0 +1,3 @@
+The Night of Crimson Sand is the name given to the massacre of all adult, full-blooded [[Mondisi Elves]] by the Effranian Emperor Ahmad I "The Bloody" of the [[Bakrad Dynasty]] in year 377 of the [[Third Terrice]]. The massacre stemmed from an attempted war of independence, waged by The Mondisi Emirate (known as the province of Mondisia under the [[Effranian Empire]]). To ensure none would question his authority again, the young emperor put all of the rebellious lords to the sword, leaving only the half-elves that would be elevated to provincial rulers, eventually becoming Emirs and nobility. 
+
+As a result of The Night of Crimson Sand, there are no known living Mondisi Elves, only a few half-elf lineages like the Ibn-Kaid dynasty of [[The Mondisi Emirate]]. 

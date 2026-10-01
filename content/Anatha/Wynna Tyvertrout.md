@@ -1,0 +1,3 @@
+Wynna is a member of the [[Cloaks of Maka]]. She resides in both [[Glimmerworth]] and [[Varghold]], where she maintains good weather for trade ships. She also sells her magical services to those who seek her out, though for a high price. She is best known for her duel alongside [[Velerion Lorestead]] against the fallen mage [[Corinth the Mad]]
+
+Wynna originally lived in the [[Mindrak Dynasty]], but was driven out by [[Mindrak]] himself after she spoke up against his rule. She has not returned since.

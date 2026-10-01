@@ -1,0 +1,5 @@
+Leylines are vast underground geysers of pure, concentrated mana that flow through the earth of [[Vallaera]] like veins of magical energy. According to legend, they were formed by the goddess [[Maka]] when the gods reforged the world after the eradication of the [[Atzani]]. Maka infused the world with magic through the Leylines, which would become the source of almost all magic in the world.
+
+For much of history, the Leylines remained buried too deep beneath the surface to interact with. They were just too deep to reach. That changed during the **[[Tenday of Ash]]**, when the demigod [[Drokai]] caused the Leylines to erupt, releasing countless beacons of raw magic upwards into the sky.
+
+Now, 600 years later, the Leylines have receded below the surface, although not nearly as deep as they were originally. Now, they lie just beneath the surface. They are close enough for mages, inventors, and adventurers to tap into their powerful magic.

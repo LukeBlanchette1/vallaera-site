@@ -1,0 +1,6 @@
+> *"My little hero is the light of my life. She dreams of adventure and I hope she can embark on many (as soon as she completes her education of course)...She will make a fine duchess one day. I'm sure of it."*
+> *- Excerpt from the late Duke Vestelier's diary*
+# Overview
+Ermesinde Leverge III is the Duchess of the [[Dawn Counties]], making her the traditional leader of House [[Leverge]]. She is by far the youngest leader of any of the [[Houses of Séllur|Noble Houses]] at just 18. After her father's sudden death just half a year ago, she was forced to assume the throne as his only heir. She openly resents being forced to take the throne and chooses to offload much responsibility to her personal council who don't mind the unsupervised power allotted to them. 
+
+Her ascension to leader of House Leverge has caused great turmoil within the house with many members of the family trying to take advantage of her inexperience to serve themselves. Opportunists across Séllur can sense blood in the water and flock to Chamtreu hoping to take advantage of the power struggle. 

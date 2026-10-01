@@ -1,0 +1,1 @@
+Gratius is a druid frozen in time in the [[Fractyl Planes]].

@@ -1,0 +1,4 @@
+# Overview
+Rothmund's Hills is the name given to the mountain range that defines the northern border o the [[Crownlands]] and [[Dawn Counties]]. It is named after [[Blooming Blades|Sir Rothmund]], the founder of House [[Verfille]]. The mountains are mineral rich, producing a large part of [[Séllur]]'s metal and stone reserves.
+
+The mountains are famously treacherous, not because of the terrain but because of the wild life. The most dangerous creatures of the [[Foxhold Woodlands]] seem to gravitate towards the mountain's slopes. The [[Seven Orders|Hillborn Order]] trains in the mountains, helping them become adept at boreal and mountain combat. The villages and towns on the mountains are very well fortified and well equipped to handle the creatures that lurk in the woods. 

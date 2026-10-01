@@ -1,0 +1,3 @@
+The Ebony Gauntlet is a group of Anathan warriors who value strength and bravery above all. They are granted an Ebony Gauntlet to signify their participation. Ebony Gauntlets are seen as the embodiment of Anatha's core values. While not working for the King, they can be called upon by him in times of need. They are considered the elite of Anatha's non-All-Star warriors.
+
+However, the Ebony Gauntlet in recent years has abandoned the crown in favor of the [[Assimilists]]. This was a sudden and drastic shift in allegiance that marked a turning point in the nation's views on assimilation, going from an outlandish idea to a cause that some began to agree with. They now follow [[Orion]], the leader of the Assimilists.

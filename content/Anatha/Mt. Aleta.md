@@ -1,0 +1,1 @@
+Mt. Aleta is the tallest mountain in all of [[Thalrune]]. [[Dragonskeep]] Proper is located halfway up it, and at its peak is where [[Acyrrikaas]] lives. Powerful monsters and magical dungeons are located throughout it, making it a frequent destination for aspiring adventurers.

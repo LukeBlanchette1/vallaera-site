@@ -1,0 +1,1 @@
+He was a member of the [[Topaz Circle]] who spread revolutionary teachings.

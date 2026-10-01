@@ -1,0 +1,1 @@
+$\quad$The world’s most famous playwright and orator. Lymric travels Vallaera, telling tales long forgotten and putting on performances of his various works. He is only in his 20s but is already considered one of the most talented artists to ever live. Some of his famous works include, The Turtle and the Harengon, The Tragedy of Acis and Galatea, and The Fall of Drokai. 

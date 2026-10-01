@@ -1,0 +1,3 @@
+The Assimilists are one of the two sides of the [[Sovereign Conflict]], with the other side being the [[Unionists]].
+
+The Assimilists propose peaceful relations with Mindrak, even if it means making some concessions to his empire. In their eyes, some believe Mindrak’s army (and Mindrak himself) is so strong that fighting is hopeless. Others believe that life would be better under Mindrak, and that Thalrune would be better off under his rule. Many Assimilists believe that the King is too passive and has grown ineffective at ruling. While the Assimilists have no true leader, many of them look to [[Orion]] as their rallying figure.

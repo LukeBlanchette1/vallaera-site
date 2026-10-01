@@ -1,0 +1,5 @@
+# Overview
+Prince Hubert [[Jacquemond]] is the current regent for [[Josette Jacquemond I|Queen Josette]]. In accordance with [[Séllurian Legal System|Séllurian Tradition]], he was elected as regent by the [[Primrose Council]]. His election was a shock to much of [[Séllur]] because he has quite a nervous disposition and is not the most assertive of people. Most believed his sister, [[Honora Jacquemond|Princess Honora]], would be elected as regent because she was Josette's most obvious heir. He does not give public addresses and only appears in public sparingly, leading to even less confidence from the people. 
+
+Being only the Prince-Regent and not particularly politically savvy, Hubert is seen as nothing more than a puppet for the Council while Josette sleeps. Because he is the regent, he has no vote on the council and, because Josette is alive, lacks the ability to invoke the monarch's veto. This has led to more activity from the Primrose Council than ever before. Some groups believe the Council's efficiency has been to Séllur's benefit, while others believe the Council is over stepping and setting a dangerous precedent.
+

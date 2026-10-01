@@ -1,0 +1,1 @@
+Chubbyam the God of War, an arrogant, entitled, prideful and violent entity. Associated with the symbol of a Clawed Hand and a Bull. 

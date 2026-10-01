@@ -1,0 +1,1 @@
+Notios of the God of Knowledge, a large fungi-esque entity with a hunger for knowledge and is known for bargaining for knowledge he’s unaware of. Associated with the symbol of a Quill and Scroll and a Monkey.

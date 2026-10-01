@@ -1,0 +1,1 @@
+In the [[The Nine Hells]], The Void is the layer of lost souls. A dismal, dank land of despair and dreariness.  Endless piles and dunes of lost objects, furniture, and wreckage comprise this layer. Lost, trapped souls drift aimlessly across the piles of trash. The layer is ruled by the [[Archdevils|Archdevil]] [[Schythra]] and the [[Demon Lords|Demon Lord]] [[Grist]].

@@ -1,0 +1,1 @@
+Cezona the Goddess of Harvest, a plump Lady who loves cooking and feeding people. Associated with the symbol of Wheat and a Sheep. 

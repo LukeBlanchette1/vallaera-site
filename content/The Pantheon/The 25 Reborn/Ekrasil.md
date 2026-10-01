@@ -1,0 +1,1 @@
+Ekrasil the God of Trickery, an impish and detached being who tricks anyone he can for the fun of it because He thinks it is funny. Associated with the symbol of a. Associated with the symbol of a Swirling Ball and a Mouse. 

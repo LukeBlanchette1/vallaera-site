@@ -1,0 +1,1 @@
+Talros the God of the Hunt, a competitive being who seeks the thrill of the Hunt, constantly out in the forests of his Domain hunting. Associated with the symbol of a Bow and Arrow and a Wolf. 
