@@ -163,42 +163,87 @@ article {
 }
 
 .explorer-content {
-  margin-top: 0;
+  margin-top: 0.75rem;
+
+  & ul li {
+    margin: 1px 0;
+  }
 
   & ul li > a,
   & .folder-container div > a,
   & .folder-container div > button span {
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
     font-weight: 500;
-    line-height: 1.5rem;
+    line-height: 1.4;
   }
 
+  // Notes: a bit of room around each one, no pill highlight
   & ul li > a {
+    display: block;
     color: var(--gray);
     opacity: 1;
+    padding: 7px 10px;
+    margin-left: -1px;
     border-radius: var(--radius-sm);
-    padding: 3px 8px;
-    transition:
-      background 0.15s ease,
-      color 0.15s ease;
+    background: none;
+    transition: color 0.15s ease;
 
     &:hover {
-      background: var(--highlight);
+      background: none;
       color: var(--dark);
     }
 
+    // Current note: accent text with a thin outlined left edge (old site style)
     &.active {
-      background: var(--highlight);
+      background: none;
       color: var(--secondary);
+      border-left: 1px solid var(--secondary);
     }
+  }
+
+  & .folder-container {
+    padding: 4px 0;
   }
 
   & .folder-container div > a,
   & .folder-container div > button span {
     color: var(--dark);
   }
+
+  & .folder-container div > a:hover,
+  & .folder-container div > button:hover span {
+    color: var(--dark);
+    background: none;
+  }
+
+  // Dropdown arrows follow the text color (white in dark mode, black in light)
+  & .folder-icon {
+    color: var(--dark);
+    opacity: 0.7;
+    transition: transform 0.15s ease;
+
+    &:hover {
+      color: var(--dark);
+      opacity: 1;
+    }
+  }
+
+  // Dropdown animation 50% faster (was 0.3s)
+  & .folder-outer {
+    transition-duration: 0.15s;
+  }
+
+  & .folder-outer > ul {
+    margin-left: 8px;
+    padding-left: 0.75rem;
+  }
 }
 
+// Site name in plain text color instead of the accent
+.page-title a,
+.page-title a:hover {
+  color: var(--dark);
+}
 // Search: wide, rounded input look
 .search {
   max-width: none;
@@ -460,52 +505,85 @@ pre {
   }
 }
 
-// Phone top bar: title, search and toggle must fit on one row
+// Phone: top bar is just the menu button and the site name. The dark-mode
+// toggle and search live inside the sidebar drawer, like the old site.
 @media all and ($mobile) {
+  .page > #quartz-body {
+    padding: 0 1rem;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100vw;
+  }
+
   .page > #quartz-body .sidebar.left {
     gap: 0.5rem;
-    padding: 1rem 0.5rem;
+    padding: 1rem 0;
     min-width: 0;
     width: 100%;
     box-sizing: border-box;
     flex-wrap: nowrap;
+    background: var(--light);
+    border-bottom: 1px solid var(--lightgray);
   }
 
   .page-title {
-    font-size: 1rem !important;
+    font-size: 1.125rem !important;
     white-space: nowrap;
-    flex-shrink: 0;
+    position: relative;
+    z-index: 103;
   }
 
   .sidebar.left > .spacer {
     display: none;
   }
 
+  // Closed: search and toggle are hidden
+  .sidebar.left > .flex-component {
+    display: none !important;
+  }
+
+  // Open: they sit at the top of the drawer, toggle above search
+  :root.mobile-no-scroll .sidebar.left > .flex-component {
+    display: flex !important;
+    flex-direction: column-reverse !important;
+    flex-wrap: nowrap !important;
+    align-items: stretch;
+    gap: 0.9rem !important;
+    position: fixed;
+    top: 4.25rem;
+    left: 1.25rem;
+    width: calc(100vw - 2.5rem);
+    z-index: 102;
+  }
+
   .sidebar.left > .flex-component > * {
     min-width: 0;
+    flex: 0 0 auto !important;
+    align-self: stretch !important;
   }
 
-  .sidebar.left > .flex-component {
-    flex: 1 1 0;
-    min-width: 0;
-    gap: 0.5rem;
-    align-items: center;
+  .sidebar.left > .flex-component .darkmode {
+    align-self: flex-start;
   }
 
-  .search > .search-button > p {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  // Drawer
+  .explorer .explorer-content {
+    background: var(--sidebar-bg);
+    padding: 9.75rem 1.25rem 2rem;
   }
 
-  .search > .search-button {
-    padding-right: 8px;
+  // Arrows on the right edge, as on the old site's mobile menu
+  .explorer-content .folder-container {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    padding: 6px 0;
+
+    & > div {
+      flex: 1;
+    }
   }
 
-  .page > #quartz-body {
-    padding: 0 1rem;
-    box-sizing: border-box;
-    width: 100%;
-    max-width: 100vw;
+  .explorer-content .folder-icon {
+    margin: 0 4px 0 0;
   }
 }

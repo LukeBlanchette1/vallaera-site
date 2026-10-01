@@ -1,4 +1,4 @@
-﻿import { PageLayout, SharedLayout } from "./quartz/cfg"
+import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
 
 // components shared across all pages
@@ -33,6 +33,7 @@ export const defaultContentPageLayout: PageLayout = {
       ],
     }),
     Component.Explorer({
+      folderClickBehavior: "collapse",
       mapFn: (node) => {
         if (node.displayName === "index") node.displayName = "Home"
       },
@@ -61,6 +62,7 @@ export const defaultListPageLayout: PageLayout = {
       ],
     }),
     Component.Explorer({
+      folderClickBehavior: "collapse",
       mapFn: (node) => {
         if (node.displayName === "index") node.displayName = "Home"
       },
