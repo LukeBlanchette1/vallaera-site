@@ -1,3 +1,8 @@
+---
+title: Home
+aliases:
+  - Home
+---
 Vallaera is a vast and ancient world full of magical beasts, terrible monsters, and mythical heroes. There are nine [[Continents]] in Vallaera, each with a unique culture and environment. The year is currently 621 AD, in the [[Third Terrice]]. 
 
 ## Continents of Vallaera

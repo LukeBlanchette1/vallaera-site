@@ -1,4 +1,4 @@
-import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
+﻿import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 import style from "./styles/search.scss"
 // @ts-ignore
 import script from "./scripts/search.inline"
@@ -27,7 +27,7 @@ export default ((userOpts?: Partial<SearchOptions>) => {
               <circle cx="8" cy="8" r="7" />
             </g>
           </svg>
-          <p>{i18n(cfg.locale).components.search.title}</p>
+          <p>Search page or heading...</p>
         </button>
         <div class="search-container">
           <div class="search-space">
@@ -51,3 +51,4 @@ export default ((userOpts?: Partial<SearchOptions>) => {
 
   return Search
 }) satisfies QuartzComponentConstructor
+

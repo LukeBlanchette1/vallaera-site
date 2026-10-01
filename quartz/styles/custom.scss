@@ -7,9 +7,16 @@
 // ==========================================================================
 
 :root {
+  --sidebar-bg: #f7f8fa;
+  --alt-bg: #f6f7fb;
   --radius: 14px;
   --radius-sm: 8px;
   --page-width: 1040px;
+}
+
+:root[saved-theme="dark"] {
+  --sidebar-bg: #14171c;
+  --alt-bg: #1f232b;
 }
 
 body {
@@ -136,7 +143,7 @@ article {
 
 // ---------- Left sidebar ----------
 .page > #quartz-body .sidebar.left {
-  background: color-mix(in srgb, var(--light) 94%, var(--dark));
+  background: var(--sidebar-bg);
   border-right: 1px solid var(--lightgray);
 
   @media all and ($mobile) {
@@ -150,8 +157,25 @@ article {
   letter-spacing: -0.02em;
 }
 
+// Tree: no "Explorer" heading, flat list like the old site
+.explorer .desktop-explorer {
+  display: none !important;
+}
+
 .explorer-content {
+  margin-top: 0;
+
+  & ul li > a,
+  & .folder-container div > a,
+  & .folder-container div > button span {
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+  }
+
   & ul li > a {
+    color: var(--gray);
+    opacity: 1;
     border-radius: var(--radius-sm);
     padding: 3px 8px;
     transition:
@@ -160,21 +184,40 @@ article {
 
     &:hover {
       background: var(--highlight);
-      opacity: 1;
+      color: var(--dark);
     }
 
     &.active {
       background: var(--highlight);
       color: var(--secondary);
-      font-weight: 600;
     }
+  }
+
+  & .folder-container div > a,
+  & .folder-container div > button span {
+    color: var(--dark);
   }
 }
 
-.search .search-button {
-  border-radius: var(--radius);
-  background: var(--light);
-  border: 1px solid var(--lightgray);
+// Search: wide, rounded input look
+.search {
+  max-width: none;
+  min-width: 0;
+  width: 100%;
+
+  & > .search-button {
+    height: 2.4rem;
+    border-radius: var(--radius);
+    background: var(--light);
+    border: 1px solid var(--lightgray);
+    padding: 0 14px 0 0;
+
+    & > p {
+      font-size: 0.875rem;
+      font-weight: 400;
+      margin: 0;
+    }
+  }
 }
 
 // ---------- Right sidebar ----------
@@ -188,12 +231,6 @@ article {
     padding-left: 0;
     padding-right: 0;
   }
-}
-
-.graph > .graph-outer {
-  border: 1px solid var(--lightgray);
-  border-radius: var(--radius);
-  background: color-mix(in srgb, var(--light) 94%, var(--dark));
 }
 
 // ---------- Links ----------
@@ -236,7 +273,7 @@ blockquote {
   margin-block: 1.8em;
   padding: 0.9em 1.5em;
   border-left: 3px solid var(--secondary);
-  background: color-mix(in srgb, var(--light) 94%, var(--dark));
+  background: var(--alt-bg);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   color: var(--gray);
 }
@@ -272,7 +309,7 @@ blockquote {
     font-size: 0.94rem;
 
     & th {
-      background: color-mix(in srgb, var(--light) 94%, var(--dark));
+      background: var(--alt-bg);
       font-size: 0.78rem;
       font-weight: 600;
       text-transform: uppercase;
@@ -319,14 +356,14 @@ hr {
 code {
   font-size: 0.86em;
   border: 1px solid var(--lightgray);
-  background: color-mix(in srgb, var(--light) 94%, var(--dark));
+  background: var(--alt-bg);
   border-radius: 6px;
   padding: 0.15em 0.45em;
 }
 
 pre {
   border-radius: var(--radius);
-  background: color-mix(in srgb, var(--light) 94%, var(--dark));
+  background: var(--alt-bg);
   margin-block: 1.6em;
 
   & > code {
@@ -420,5 +457,55 @@ pre {
   * {
     animation: none !important;
     transition: none !important;
+  }
+}
+
+// Phone top bar: title, search and toggle must fit on one row
+@media all and ($mobile) {
+  .page > #quartz-body .sidebar.left {
+    gap: 0.5rem;
+    padding: 1rem 0.5rem;
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
+    flex-wrap: nowrap;
+  }
+
+  .page-title {
+    font-size: 1rem !important;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .sidebar.left > .spacer {
+    display: none;
+  }
+
+  .sidebar.left > .flex-component > * {
+    min-width: 0;
+  }
+
+  .sidebar.left > .flex-component {
+    flex: 1 1 0;
+    min-width: 0;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .search > .search-button > p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .search > .search-button {
+    padding-right: 8px;
+  }
+
+  .page > #quartz-body {
+    padding: 0 1rem;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100vw;
   }
 }

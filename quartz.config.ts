@@ -8,7 +8,7 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Vallaera",
+    pageTitle: "Vallaera Wiki",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
@@ -93,6 +93,7 @@ const config: QuartzConfig = {
 }
 
 export default config
+
 
 
 
