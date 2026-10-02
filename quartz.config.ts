@@ -1,4 +1,4 @@
-﻿import { QuartzConfig } from "./quartz/cfg"
+import { QuartzConfig } from "./quartz/cfg"
 import * as Plugin from "./quartz/plugins"
 
 /**
@@ -14,7 +14,7 @@ const config: QuartzConfig = {
     enablePopovers: true,
     analytics: null,
     locale: "en-US",
-    baseUrl: "lukeblanchette1.github.io/vallaera-site",
+    baseUrl: "vallaera.com",
     ignorePatterns: ["private", "templates", ".obsidian", "*.base", "Untitled*"],
     defaultDateType: "modified",
     theme: {
