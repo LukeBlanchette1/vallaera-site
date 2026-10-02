@@ -111,7 +111,7 @@
     <div class="masthead">
       <div class="flourish"><i></i></div>
       <h1>Market Admin</h1>
-      <p>You shouldn't be here.</p>
+      <p>YOU SHOULDNT BE HERE</p>
     </div>
 
     <!-- Step 1: connect -->
@@ -162,7 +162,6 @@
               <label><input type="radio" name="size" value="medium" /><span>Medium</span></label>
               <label><input type="radio" name="size" value="large" /><span>Large</span></label>
             </div>
-            <p class="hint">Small shifts prices 5&ndash;10%, medium 10&ndash;20%, large 25&ndash;40%. The exact amount is rolled each time.</p>
           </div>
         </div>
 
@@ -185,13 +184,13 @@
         </div>
 
         <p class="summary" id="summary"></p>
-        <button class="go" id="submit" type="submit">Proclaim</button>
-        <p class="hint">Prices adjust at the next update, usually within about 2 minutes of posting.</p>
+        <button class="go" id="submit" type="submit">Trigger World Event</button>
+
       </form>
     </section>
 
     <section class="frame" id="recent-box" hidden>
-      <h2>Recent proclamations</h2>
+      <h2>Recent World Events</h2>
       <table class="recent"><thead><tr><th>Headline</th><th>Who</th><th>Move</th><th>Status</th></tr></thead><tbody id="recent"></tbody></table>
     </section>
   </main>
@@ -321,7 +320,7 @@
         $("form").reset(); buildChips(); summarize(); loadRecent();
       }).catch(function (err) {
         say("msg", err.message || "Something went wrong. Nothing was changed.", "err");
-      }).then(function () { btn.disabled = false; btn.textContent = "Proclaim"; });
+      }).then(function () { btn.disabled = false; btn.textContent = "Trigger World Event"; });
     });
 
     // read events.json, add the event, write it back (retry once if someone else wrote meanwhile)

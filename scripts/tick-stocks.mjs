@@ -76,6 +76,21 @@ if (!state || args.has("--reset")) {
   process.exit(0)
 }
 
+// ---- a company added later has no history yet: give it past prices that match the existing timeline
+const lastPrices = state.ticks[state.ticks.length - 1].p
+const added = companies.filter((c) => !(c.ticker in lastPrices))
+for (const c of added) {
+  let p = c.start
+  for (const k of state.ticks) {
+    const r =
+      (c.drift ?? 0) + (c.vol ?? 0.015) * gauss() + gauss() * 0.004 + MEAN_REVERSION * (Math.log(c.start) - Math.log(p))
+    p = Math.max(1, round2(p * Math.exp(r)))
+    k.p[c.ticker] = p
+  }
+  console.log(`Backfilled ${state.ticks.length} ticks of history for new company ${c.ticker}.`)
+}
+if (added.length) writeJson("history.json", state)
+
 // ---- pick up new events
 const eventId = (e) => e.id || `${e.date || "now"}|${[].concat(e.tickers || e.ticker || "ALL").join(",")}|${e.change}`
 const pending = events.filter((e) => {
