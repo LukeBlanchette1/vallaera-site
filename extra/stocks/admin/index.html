@@ -111,7 +111,7 @@
     <div class="masthead">
       <div class="flourish"><i></i></div>
       <h1>Market Admin</h1>
-      <p>Stir the markets of Vallaera.</p>
+      <p>You shouldn't be here.</p>
     </div>
 
     <!-- Step 1: connect -->
@@ -134,11 +134,10 @@
 
     <!-- Step 2: post an event -->
     <section class="frame" id="composer" hidden>
-      <div class="status" style="margin-bottom:1rem">
-        <span class="hint" style="margin:0">Connected to the exchange. <span id="repo-name"></span></span>
+      <div class="status" style="margin-bottom:1rem;justify-content:flex-end">
         <button class="link" id="forget" type="button">Forget key</button>
       </div>
-      <h2>Proclaim an event</h2>
+      <h2>World Event</h2>
 
       <div id="msg" class="msg" hidden></div>
 
@@ -157,8 +156,13 @@
             </div>
           </div>
           <div class="field">
-            <label for="amount">Amount</label>
-            <div class="amount"><input id="amount" type="number" min="0.5" max="100" step="0.5" value="10" inputmode="decimal" /><span>%</span></div>
+            <span class="lab">Size</span>
+            <div class="chips">
+              <label><input type="radio" name="size" value="small" checked /><span>Small</span></label>
+              <label><input type="radio" name="size" value="medium" /><span>Medium</span></label>
+              <label><input type="radio" name="size" value="large" /><span>Large</span></label>
+            </div>
+            <p class="hint">Small shifts prices 5&ndash;10%, medium 10&ndash;20%, large 25&ndash;40%. The exact amount is rolled each time.</p>
           </div>
         </div>
 
@@ -228,7 +232,7 @@
     function render() {
       var has = !!getToken();
       show("connect", !has); show("composer", has); show("recent-box", has);
-      if (has) { $("repo-name").textContent = OWNER + "/" + REPO; loadRecent(); }
+      if (has) loadRecent();
     }
 
     $("save-token").addEventListener("click", function () {
@@ -277,27 +281,30 @@
       return Array.prototype.filter.call($("chips").querySelectorAll("input"), function (i) { return i.checked; }).map(function (i) { return i.value; });
     }
     function nameOf(t) { var c = companies.filter(function (x) { return x.ticker === t; })[0]; return c ? c.name : t; }
-    function currentChange() {
-      var a = parseFloat($("amount").value);
-      if (!isFinite(a) || a <= 0) return null;
-      var down = document.querySelector('input[name="dir"]:checked').value === "down";
-      return Math.round((down ? -a : a) * 100) / 100;
+    // how big each size of event is, as a percent move (a value in this range is rolled per event)
+    var SIZES = { small: [5, 10], medium: [10, 20], large: [25, 40] };
+    function direction() { return document.querySelector('input[name="dir"]:checked').value; }
+    function sizeKey() { return document.querySelector('input[name="size"]:checked').value; }
+    function rollChange() {
+      var r = SIZES[sizeKey()], pct = r[0] + Math.random() * (r[1] - r[0]);
+      pct = Math.round(pct * 10) / 10;
+      return direction() === "down" ? -pct : pct;
     }
     function summarize() {
-      var sel = selected(), ch = currentChange(), el = $("summary");
-      if (!sel.length || ch === null) { el.textContent = ""; return; }
+      var sel = selected(), el = $("summary");
+      if (!sel.length) { el.textContent = ""; return; }
+      var r = SIZES[sizeKey()];
       var who = sel[0] === "ALL" ? "Every company" : sel.map(nameOf).join(", ");
       var sp = $("speed").options[$("speed").selectedIndex].text.replace(/^(\w+) .*/, "$1").toLowerCase();
-      el.textContent = who + (sel[0] === "ALL" || sel.length > 1 ? " will " : " will ") + (ch > 0 ? "rise " : "fall ") + Math.abs(ch) + "%, " + sp + ".";
+      el.textContent = who + " will " + (direction() === "up" ? "rise" : "fall") + " by a " + sizeKey() + " amount (" + r[0] + "\u2013" + r[1] + "%), " + sp + ".";
     }
-    ["amount", "speed"].forEach(function (id) { $(id).addEventListener("input", summarize); });
-    Array.prototype.forEach.call(document.querySelectorAll('input[name="dir"]'), function (r) { r.addEventListener("change", summarize); });
-
+    $("speed").addEventListener("input", summarize);
+    Array.prototype.forEach.call(document.querySelectorAll('input[name="dir"], input[name="size"]'), function (r) { r.addEventListener("change", summarize); });
     $("form").addEventListener("submit", function (e) {
       e.preventDefault();
-      var sel = selected(), ch = currentChange(), head = $("headline").value.trim();
+      var sel = selected(), head = $("headline").value.trim();
       if (!sel.length) return say("msg", "Choose at least one company.", "err");
-      if (ch === null || Math.abs(ch) > 100) return say("msg", "Enter an amount between 0.5 and 100 percent.", "err");
+      var ch = rollChange();
       if (!head) return say("msg", "Write a headline for the news.", "err");
 
       var event = {
@@ -310,7 +317,7 @@
       };
       var btn = $("submit"); btn.disabled = true; btn.textContent = "Posting…";
       save(event, 0).then(function () {
-        say("msg", "Proclaimed! The exchange will update in about 2 minutes. Refresh the Stocks page then.", "ok");
+        say("msg", "Done. The world has been told. The exchange will update in about 2 minutes. Refresh the Stocks page then.", "ok");
         $("form").reset(); buildChips(); summarize(); loadRecent();
       }).catch(function (err) {
         say("msg", err.message || "Something went wrong. Nothing was changed.", "err");
