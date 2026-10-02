@@ -748,7 +748,7 @@ a {
   letter-spacing: -0.02em;
   padding: 4px 8px;
   margin-left: -8px;
-  border-radius: 8px;
+  border-radius: 0;
   cursor: pointer;
   white-space: nowrap;
 
@@ -772,16 +772,14 @@ a {
   position: absolute;
   top: calc(100% + 6px);
   left: 0;
-  min-width: 210px;
+  min-width: 220px;
   margin: 0;
-  padding: 6px;
+  padding: 0;
   list-style: none;
   background: var(--light);
-  border: 1px solid var(--lightgray);
-  border-radius: 12px;
-  box-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.2),
-    0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--gray);
+  border-radius: 0;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.25);
   z-index: 300;
 
   &[hidden] {
@@ -790,12 +788,17 @@ a {
 
   & li {
     margin: 0;
+    border-bottom: 1px solid var(--lightgray);
+
+    &:last-child {
+      border-bottom: none;
+    }
   }
 
   & a {
     display: block;
-    padding: 8px 12px;
-    border-radius: 8px;
+    padding: 11px 16px;
+    border-radius: 0;
     font-size: 0.9375rem;
     font-weight: 500;
     line-height: 1.4;
@@ -810,6 +813,73 @@ a {
 
     &[aria-current="page"] {
       color: var(--secondary);
+      box-shadow: inset 3px 0 0 var(--secondary);
     }
+  }
+}
+
+// ==========================================================================
+// Final round: Home tab in the sidebar, bolder site switcher
+// ==========================================================================
+.explorer-content > ul.explorer-home {
+  list-style: none;
+  margin: 0 0 0 12px;
+  padding: 0 0 0 8px;
+  border-left: 1px solid var(--lightgray);
+
+  & li {
+    margin: 1px 0;
+  }
+
+  & li > a {
+    font-weight: 600;
+    color: var(--dark);
+
+    &:hover {
+      color: var(--dark);
+    }
+
+    &.active {
+      color: var(--secondary);
+    }
+  }
+}
+
+// The title dropdown: plain text (no box), a little larger than the sidebar's other headings
+.site-switcher-btn {
+  background: none;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 4px 8px;
+  margin-left: -8px;
+  font-size: 1.5rem;
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: var(--hover-bg);
+  }
+
+  & svg {
+    width: 18px;
+    height: 18px;
+    color: inherit;
+  }
+}
+
+@media all and not ($mobile) {
+  .page-title .site-switcher-menu {
+    min-width: 100%;
+  }
+}
+
+@media all and ($mobile) {
+  .explorer-content > ul.explorer-home {
+    margin-left: 4px;
+  }
+
+  .site-switcher-btn {
+    padding: 4px 8px;
+    font-size: 1.3rem;
   }
 }

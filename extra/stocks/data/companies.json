@@ -22,5 +22,29 @@
     "start": 94.75,
     "vol": 0.016,
     "drift": 0.0002
+  },
+  {
+    "ticker": "ASHW",
+    "name": "Ashwick Vineyards",
+    "tagline": "Wines and spirits from the Ashwick slopes",
+    "start": 54.3,
+    "vol": 0.014,
+    "drift": 0.0002
+  },
+  {
+    "ticker": "SADD",
+    "name": "Saddiq's Menagerie",
+    "tagline": "Exotic beasts, mounts and creature handlers",
+    "start": 37.85,
+    "vol": 0.024,
+    "drift": 0.0003
+  },
+  {
+    "ticker": "KTCO",
+    "name": "Krettlam Trading Company",
+    "tagline": "Overland trade caravans and mercantile contracts",
+    "start": 118.4,
+    "vol": 0.015,
+    "drift": 0.0002
   }
 ]
