@@ -1,13 +1,10 @@
-name: Deploy site to GitHub Pages
+﻿name: Deploy site to GitHub Pages
 on:
   push:
     branches: [main]
   workflow_dispatch:
-  schedule:
-    # Stock market update every 4 hours
-    - cron: "17 */4 * * *"
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 concurrency:
@@ -23,21 +20,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Update stock prices
-        run: |
-          node scripts/tick-stocks.mjs
-          if [ -n "$(git status --porcelain extra/stocks/data)" ]; then
-            git config user.name "vallaera-market"
-            git config user.email "actions@users.noreply.github.com"
-            git add extra/stocks/data
-            git commit -m "Stock market update"
-            git pull --rebase origin main
-            git push origin HEAD:main
-          fi
       - run: npm ci
       - run: npx quartz build
-      - name: Add stocks and feedback pages
-        run: cp -r extra/. public/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: public
