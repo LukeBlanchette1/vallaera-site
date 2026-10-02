@@ -3,70 +3,149 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Vallaera Stocks</title>
+  <title>The Vallaera Exchange</title>
   <meta name="description" content="The Vallaera stock exchange: Onyx Emporium, Scrolls and Scries and the West Sea Shipping Company." />
   <link rel="icon" href="/static/icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <script src="/assets/common.js"></script>
   <link rel="stylesheet" href="/assets/common.css" />
   <style>
-    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
-    .card {
-      text-align: left; font: inherit; color: inherit; cursor: pointer;
-      background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 1rem 1.1rem; display: grid; gap: 0.25rem; transition: border-color 0.15s ease, background 0.15s ease;
+    /* ===== The Exchange: a merchant's ledger. Sharp corners, ink and gold. ===== */
+    :root {
+      --gold: #8a6a1f;
+      --bg: #efe3c2;
+      --panel: #f6ecd2;
+      --panel-2: #ead9ab;
+      --border: #b79a62;
+      --text: #35261a;
+      --muted: #7a6a50;
+      --accent: #7c1d2b;
+      --accent-soft: rgba(124, 29, 43, 0.08);
+      --up: #2e7d4f;
+      --down: #a8322b;
+      --hover: rgba(90, 60, 20, 0.07);
+      --paper: radial-gradient(ellipse at 50% -10%, #f7eed4 0%, #efe3c2 55%, #e3d3a6 100%);
     }
-    .card:hover { background: var(--panel-2); }
-    .card.selected { border-color: var(--accent); background: var(--accent-soft); }
-    .card .tick { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; color: var(--muted); }
-    .card .name { font-weight: 700; font-size: 1.05rem; }
-    .card .row { display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem; margin-top: 0.35rem; }
-    .price { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em; }
-    .price small { font-size: 0.8rem; font-weight: 600; color: var(--muted); margin-left: 4px; }
-    .chg { font-weight: 700; font-size: 0.9rem; }
+    :root[saved-theme="dark"] {
+      --gold: #c9a24d;
+      --bg: #14110f;
+      --panel: #1b1713;
+      --panel-2: #241e17;
+      --border: #4d4129;
+      --text: #e9dfc6;
+      --muted: #a69a80;
+      --accent: #e0b85c;
+      --accent-soft: rgba(224, 184, 92, 0.1);
+      --up: #5cc08a;
+      --down: #e0655b;
+      --hover: rgba(233, 223, 198, 0.07);
+      --paper: radial-gradient(ellipse at 50% -10%, #2a2118 0%, #17130f 55%, #100d0a 100%);
+    }
+
+    html, body { background: var(--paper) fixed, var(--bg); font-family: "EB Garamond", Georgia, "Times New Roman", serif; font-size: 18px; }
+    .topbar { background: var(--panel); border-bottom: 3px double var(--gold); }
+    .site-switcher-btn, .page-foot, .theme-switch { font-family: "Cinzel", Georgia, serif; }
+    .site-switcher-btn { font-size: 1.05rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+    .site-switcher-menu a { font-family: "Cinzel", Georgia, serif; font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; }
+    .theme-switch .switch, .theme-switch .knob { border-radius: 0; }
+
+    main { max-width: 1040px; }
+
+    /* ---------- Masthead ---------- */
+    .masthead { text-align: center; margin: 1.25rem 0 2rem; }
+    .masthead h1 {
+      display: block; border: none; margin: 0; padding: 0;
+      font-family: "Cinzel", Georgia, serif; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+      font-size: clamp(1.7rem, 5vw, 2.9rem); line-height: 1.15; color: var(--gold);
+    }
+    .masthead .tagline { margin: 0.5rem 0 0; font-style: italic; color: var(--muted); font-size: 1.1rem; }
+    .flourish { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 0.9rem auto; max-width: 560px; color: var(--gold); }
+    .flourish::before, .flourish::after { content: ""; flex: 1; height: 5px; border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold); }
+    .flourish i { width: 10px; height: 10px; background: var(--gold); transform: rotate(45deg); display: block; box-shadow: 0 0 0 3px var(--bg), 0 0 0 4px var(--gold); }
+    #updated { display: block; margin-top: 0.4rem; font-size: 0.95rem; }
+
     .up { color: var(--up); }
     .down { color: var(--down); }
-    .spark { width: 100%; height: 42px; margin-top: 0.4rem; }
+    h2.section, .frame h2 {
+      font-family: "Cinzel", Georgia, serif; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      font-size: 1.15rem; color: var(--gold); margin: 0;
+    }
+    h2.section { margin: 2.5rem 0 1rem; text-align: center; }
+    h2.section::before, h2.section::after { content: "\2756"; margin: 0 0.7rem; font-size: 0.8em; }
 
-    .panel { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1.25rem; }
-    .panel-head { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 0.75rem; margin-bottom: 0.75rem; }
-    .panel-head h2 { margin: 0; font-size: 1.25rem; letter-spacing: -0.02em; }
-    .panel-head .sub { color: var(--muted); font-size: 0.85rem; margin-top: 2px; }
-    .ranges { display: flex; gap: 4px; }
+    /* ---------- Ledger table ---------- */
+    .ledger { width: 100%; border-collapse: collapse; border: 1px solid var(--border); background: var(--panel); }
+    .ledger caption { caption-side: top; text-align: left; padding: 0 0 0.5rem; }
+    .ledger th {
+      font-family: "Cinzel", Georgia, serif; font-weight: 600; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--muted); text-align: right; padding: 0.7rem 1rem; border-bottom: 3px double var(--gold);
+    }
+    .ledger th:first-child, .ledger td:first-child { text-align: left; }
+    .ledger td { padding: 0.9rem 1rem; text-align: right; border-bottom: 1px solid var(--border); vertical-align: middle; font-variant-numeric: lining-nums tabular-nums; }
+    .ledger tr:last-child td { border-bottom: none; }
+    .ledger tbody tr { cursor: pointer; transition: background 0.15s ease; }
+    .ledger tbody tr:hover { background: var(--hover); }
+    .ledger tbody tr.selected { background: var(--accent-soft); box-shadow: inset 4px 0 0 var(--gold); }
+    .co-name { font-family: "Cinzel", Georgia, serif; font-weight: 700; font-size: 1.02rem; letter-spacing: 0.03em; }
+    .co-meta { color: var(--muted); font-style: italic; font-size: 0.95rem; }
+    .co-tick { font-family: "Cinzel", Georgia, serif; font-size: 0.7rem; letter-spacing: 0.14em; color: var(--gold); margin-right: 0.5rem; font-style: normal; }
+    .px { font-weight: 600; font-size: 1.25rem; }
+    .px small { font-size: 0.8rem; color: var(--muted); font-weight: 400; margin-left: 3px; }
+    .spark { width: 130px; height: 34px; display: block; margin-left: auto; }
+
+    /* ---------- Framed chart ---------- */
+    .frame { position: relative; margin-top: 2rem; padding: 1.4rem 1.6rem 1.6rem; background: var(--panel); border: 3px double var(--gold); }
+    .frame::before, .frame::after { content: ""; position: absolute; width: 14px; height: 14px; border: 2px solid var(--gold); background: var(--bg); transform: rotate(45deg); }
+    .frame::before { top: -9px; left: -9px; }
+    .frame::after { bottom: -9px; right: -9px; }
+    .frame-head { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 0.75rem; margin-bottom: 0.5rem; }
+    .frame .sub { color: var(--muted); font-style: italic; margin-top: 4px; }
+    .ranges { display: flex; }
     .ranges button {
-      font: inherit; font-size: 0.8rem; font-weight: 600; color: var(--muted); background: none;
-      border: 1px solid var(--border); border-radius: 999px; padding: 4px 12px; cursor: pointer;
+      font-family: "Cinzel", Georgia, serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; color: var(--muted);
+      background: none; border: 1px solid var(--border); border-radius: 0; margin-left: -1px; padding: 6px 14px; cursor: pointer;
     }
     .ranges button:hover { background: var(--hover); color: var(--text); }
-    .ranges button.on { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); }
+    .ranges button.on { background: var(--gold); border-color: var(--gold); color: var(--bg); }
 
-    .chart-wrap { position: relative; }
-    #chart { width: 100%; height: 320px; display: block; touch-action: pan-y; }
+    .chart-wrap { position: relative; margin-top: 0.5rem; }
+    #chart { width: 100%; height: 330px; display: block; touch-action: pan-y; font-family: "EB Garamond", Georgia, serif; }
     #tip {
-      position: absolute; pointer-events: none; display: none; background: var(--bg); border: 1px solid var(--border);
-      border-radius: 10px; padding: 6px 10px; font-size: 0.8rem; box-shadow: var(--shadow); white-space: nowrap; transform: translate(-50%, -110%);
+      position: absolute; pointer-events: none; display: none; background: var(--bg); border: 1px solid var(--gold); border-radius: 0;
+      padding: 6px 12px; font-size: 0.9rem; white-space: nowrap; transform: translate(-50%, -115%);
     }
-    #tip b { display: block; font-size: 0.95rem; }
-    #tip span { color: var(--muted); }
+    #tip b { display: block; font-family: "Cinzel", Georgia, serif; font-size: 0.95rem; }
+    #tip span { color: var(--muted); font-style: italic; }
 
-    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.75rem; margin-top: 1rem; }
-    .stat { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 0.6rem 0.8rem; }
-    .stat span { display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); font-weight: 600; }
-    .stat b { font-size: 1.05rem; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 1rem; border: 1px solid var(--border); }
+    .stat { padding: 0.7rem 1rem; border-left: 1px solid var(--border); text-align: center; }
+    .stat:first-child { border-left: none; }
+    .stat span { display: block; font-family: "Cinzel", Georgia, serif; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+    .stat b { font-size: 1.2rem; font-weight: 600; font-variant-numeric: lining-nums tabular-nums; }
 
-    h2.section { font-size: 1.25rem; letter-spacing: -0.02em; margin: 2rem 0 0.75rem; }
-    .news { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
-    .news li { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 0.8rem 1rem; }
-    .news .meta { color: var(--muted); font-size: 0.78rem; margin-bottom: 2px; display: flex; gap: 0.6rem; flex-wrap: wrap; }
-    .news .head { font-weight: 700; }
-    .news .detail { color: var(--muted); font-size: 0.9rem; margin-top: 2px; line-height: 1.5; }
-    .badge { font-weight: 700; padding: 0 8px; border-radius: 999px; border: 1px solid currentColor; font-size: 0.72rem; }
-    .empty { color: var(--muted); }
-    .note { color: var(--muted); font-size: 0.8rem; margin-top: 1.5rem; line-height: 1.5; }
+    /* ---------- Proclamations ---------- */
+    .news { list-style: none; margin: 0; padding: 0; border-top: 3px double var(--gold); }
+    .news li { padding: 1rem 0.25rem; border-bottom: 1px solid var(--border); }
+    .news .meta { display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: baseline; font-size: 0.95rem; color: var(--muted); font-style: italic; }
+    .news .tag { font-style: normal; font-family: "Cinzel", Georgia, serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; }
+    .news .head { font-family: "Cinzel", Georgia, serif; font-weight: 700; font-size: 1.1rem; margin-top: 0.25rem; letter-spacing: 0.02em; }
+    .news .detail { margin-top: 0.2rem; line-height: 1.55; }
+    .empty { text-align: center; color: var(--muted); font-style: italic; padding: 1.5rem 0 !important; }
+    .note { text-align: center; color: var(--muted); font-style: italic; margin-top: 2.5rem; }
 
-    @media (max-width: 800px) { #chart { height: 240px; } }
+    @media (max-width: 800px) {
+      html, body { font-size: 17px; }
+      .ledger .hide-sm { display: none; }
+      .ledger th, .ledger td { padding: 0.75rem 0.6rem; }
+      .spark { width: 84px; }
+      .frame { padding: 1rem 0.9rem 1.2rem; }
+      #chart { height: 240px; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .stat:nth-child(3) { border-left: none; }
+      .stat:nth-child(n+3) { border-top: 1px solid var(--border); }
+    }
   </style>
 </head>
 <body>
@@ -89,22 +168,31 @@
   </header>
 
   <main>
-    <h1>Vallaera Stocks</h1>
-    <p class="lead">The Vallaera exchange. Prices are in gold pieces (gp) and refresh every few hours. <span id="updated"></span></p>
+    <div class="masthead">
+      <div class="flourish"><i></i></div>
+      <h1>The Vallaera Exchange</h1>
+      <div class="flourish"><i></i></div>
+      <p class="tagline">Trade of the nine continents, reckoned in gold pieces. <span id="updated"></span></p>
+    </div>
 
-    <div class="cards" id="cards"></div>
+    <table class="ledger" id="ledger">
+      <thead>
+        <tr><th>Company</th><th>Price</th><th>24 hours</th><th class="hide-sm">7 days</th><th class="hide-sm">Trend</th></tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
 
-    <section class="panel" id="detail">
-      <div class="panel-head">
+    <section class="frame" id="detail">
+      <div class="frame-head">
         <div>
-          <h2 id="d-name">Loading…</h2>
+          <h2 id="d-name">Consulting the ledgers&hellip;</h2>
           <div class="sub" id="d-sub"></div>
         </div>
         <div class="ranges" id="ranges">
           <button data-n="6">1D</button>
           <button data-n="42">1W</button>
           <button data-n="180" class="on">1M</button>
-          <button data-n="0">All</button>
+          <button data-n="0">ALL</button>
         </div>
       </div>
       <div class="chart-wrap">
@@ -114,13 +202,13 @@
       <div class="stats" id="stats"></div>
     </section>
 
-    <h2 class="section">Market news</h2>
+    <h2 class="section">Proclamations</h2>
     <ul class="news" id="news"></ul>
 
-    <p class="note">All companies and prices are fictional and belong to the world of Vallaera.</p>
+    <p class="note">All companies named here are fictional and belong to the world of Vallaera.</p>
   </main>
 
-  <footer class="page-foot">Vallaera Stocks</footer>
+  <footer class="page-foot">The Vallaera Exchange</footer>
 
   <script>
   (function () {
@@ -134,46 +222,50 @@
       return n;
     }
     function fmt(n) { return n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
-    function pct(n) { return (n >= 0 ? "+" : "") + n.toFixed(2) + "%"; }
+    function pct(n) { return (n >= 0 ? "+" : "−") + Math.abs(n).toFixed(2) + "%"; }
     function cls(n) { return n >= 0 ? "up" : "down"; }
     function when(t) {
       return new Date(t).toLocaleString(undefined, { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
     }
-    function series(ticker) {
-      return hist.ticks.map(function (k) { return { t: k.t, v: k.p[ticker] }; });
-    }
+    function series(ticker) { return hist.ticks.map(function (k) { return { t: k.t, v: k.p[ticker] }; }); }
     function changeOver(s, n) {
       var a = s[Math.max(0, s.length - 1 - n)].v, b = s[s.length - 1].v;
       return (b - a) / a * 100;
     }
 
     function sparkline(svg, s, color) {
-      var w = 200, h = 42, min = Infinity, max = -Infinity;
+      var w = 130, h = 34, min = Infinity, max = -Infinity;
       s.forEach(function (p) { min = Math.min(min, p.v); max = Math.max(max, p.v); });
       var span = max - min || 1, pts = s.map(function (p, i) {
         return (i / (s.length - 1) * w).toFixed(1) + "," + (h - 3 - (p.v - min) / span * (h - 6)).toFixed(1);
       });
       svg.setAttribute("viewBox", "0 0 " + w + " " + h);
       svg.setAttribute("preserveAspectRatio", "none");
-      el("polyline", { points: pts.join(" "), fill: "none", stroke: color, "stroke-width": 2, "vector-effect": "non-scaling-stroke", "stroke-linejoin": "round" }, svg);
+      el("polyline", { points: pts.join(" "), fill: "none", stroke: color, "stroke-width": 1.75, "vector-effect": "non-scaling-stroke", "stroke-linejoin": "round" }, svg);
     }
 
-    function renderCards() {
-      var box = document.getElementById("cards");
-      box.innerHTML = "";
+    function renderLedger() {
+      var body = document.getElementById("rows");
+      body.innerHTML = "";
       companies.forEach(function (c) {
-        var s = series(c.ticker), last = s[s.length - 1].v, d = changeOver(s, 6);
-        var b = document.createElement("button");
-        b.className = "card" + (c.ticker === selected ? " selected" : "");
-        b.innerHTML = '<span class="tick">' + c.ticker + '</span><span class="name">' + c.name + '</span>' +
-          '<span class="row"><span class="price">' + fmt(last) + '<small>gp</small></span>' +
-          '<span class="chg ' + cls(d) + '">' + pct(d) + ' <small style="color:var(--muted);font-weight:500">24h</small></span></span>';
+        var s = series(c.ticker), last = s[s.length - 1].v, d1 = changeOver(s, 6), d7 = changeOver(s, 42);
+        var tr = document.createElement("tr");
+        if (c.ticker === selected) tr.className = "selected";
+        tr.innerHTML =
+          '<td><div class="co-name"></div><div class="co-meta"><span class="co-tick"></span><span class="co-tag"></span></div></td>' +
+          '<td class="px">' + fmt(last) + '<small>gp</small></td>' +
+          '<td class="' + cls(d1) + '">' + (d1 >= 0 ? "▲ " : "▼ ") + pct(d1) + '</td>' +
+          '<td class="hide-sm ' + cls(d7) + '">' + (d7 >= 0 ? "▲ " : "▼ ") + pct(d7) + '</td>' +
+          '<td class="hide-sm"></td>';
+        tr.querySelector(".co-name").textContent = c.name;
+        tr.querySelector(".co-tick").textContent = c.ticker;
+        tr.querySelector(".co-tag").textContent = c.tagline;
         var svg = document.createElementNS(NS, "svg");
         svg.setAttribute("class", "spark");
-        b.appendChild(svg);
-        sparkline(svg, s.slice(-42), d >= 0 ? "var(--up)" : "var(--down)");
-        b.addEventListener("click", function () { selected = c.ticker; renderCards(); renderDetail(); });
-        box.appendChild(b);
+        tr.lastChild.appendChild(svg);
+        sparkline(svg, s.slice(-42), d7 >= 0 ? "var(--up)" : "var(--down)");
+        tr.addEventListener("click", function () { selected = c.ticker; renderLedger(); renderDetail(); });
+        body.appendChild(tr);
       });
     }
 
@@ -181,20 +273,20 @@
       var c = companies.filter(function (x) { return x.ticker === selected; })[0];
       var all = series(selected), s = rangeN ? all.slice(-(rangeN + 1)) : all;
       var last = all[all.length - 1].v, first = s[0].v, ch = (last - first) / first * 100;
-      document.getElementById("d-name").textContent = c.name + " (" + c.ticker + ")";
-      document.getElementById("d-sub").innerHTML = c.tagline + ' &middot; <b>' + fmt(last) + ' gp</b> <span class="' + cls(ch) + '">' + pct(ch) + "</span>";
-
+      document.getElementById("d-name").textContent = c.name;
+      document.getElementById("d-sub").innerHTML = '<b style="font-style:normal;font-family:Cinzel,Georgia,serif;letter-spacing:.1em;font-size:.8rem;color:var(--gold)">' + c.ticker + '</b> &middot; ' +
+        fmt(last) + ' gp &middot; <span class="' + cls(ch) + '" style="font-style:normal">' + pct(ch) + "</span>";
       var hi = Math.max.apply(null, s.map(function (p) { return p.v; })), lo = Math.min.apply(null, s.map(function (p) { return p.v; }));
       document.getElementById("stats").innerHTML =
-        [["High", fmt(hi)], ["Low", fmt(lo)], ["Open", fmt(first)], ["Last", fmt(last)]]
+        [["High", fmt(hi)], ["Low", fmt(lo)], ["Open", fmt(first)], ["Close", fmt(last)]]
           .map(function (x) { return '<div class="stat"><span>' + x[0] + "</span><b>" + x[1] + " gp</b></div>"; }).join("");
       drawChart(s, ch >= 0 ? "var(--up)" : "var(--down)");
     }
 
     function drawChart(s, color) {
       var svg = document.getElementById("chart"), tip = document.getElementById("tip");
-      var W = svg.clientWidth || 800, H = svg.clientHeight || 320;
-      var padL = 8, padR = 56, padT = 12, padB = 24;
+      var W = svg.clientWidth || 800, H = svg.clientHeight || 330;
+      var padL = 8, padR = 60, padT = 12, padB = 26;
       svg.innerHTML = "";
       svg.setAttribute("viewBox", "0 0 " + W + " " + H);
       var min = Infinity, max = -Infinity;
@@ -205,13 +297,12 @@
 
       for (var g = 0; g <= 4; g++) {
         var gv = min + (max - min) * g / 4, gy = y(gv);
-        el("line", { x1: padL, x2: W - padR, y1: gy, y2: gy, stroke: "var(--border)", "stroke-width": 1 }, svg);
-        var t = el("text", { x: W - padR + 8, y: gy + 4, fill: "var(--muted)", "font-size": 11 }, svg);
+        el("line", { x1: padL, x2: W - padR, y1: gy, y2: gy, stroke: "var(--border)", "stroke-width": 1, "stroke-dasharray": "2 4" }, svg);
+        var t = el("text", { x: W - padR + 8, y: gy + 4, fill: "var(--muted)", "font-size": 13 }, svg);
         t.textContent = gv.toFixed(2);
       }
-      var tl = [0, Math.floor((s.length - 1) / 2), s.length - 1];
-      tl.forEach(function (i, k) {
-        var tx = el("text", { x: x(i), y: H - 6, fill: "var(--muted)", "font-size": 11, "text-anchor": k === 0 ? "start" : k === 2 ? "end" : "middle" }, svg);
+      [0, Math.floor((s.length - 1) / 2), s.length - 1].forEach(function (i, k) {
+        var tx = el("text", { x: x(i), y: H - 6, fill: "var(--muted)", "font-size": 13, "text-anchor": k === 0 ? "start" : k === 2 ? "end" : "middle" }, svg);
         tx.textContent = new Date(s[i].t).toLocaleDateString(undefined, { month: "short", day: "numeric" });
       });
 
@@ -219,19 +310,21 @@
       el("polygon", { points: pts.join(" ") + " " + x(s.length - 1).toFixed(1) + "," + (H - padB) + " " + x(0).toFixed(1) + "," + (H - padB), fill: color, opacity: 0.1 }, svg);
       el("polyline", { points: pts.join(" "), fill: "none", stroke: color, "stroke-width": 2, "stroke-linejoin": "round" }, svg);
 
-      var dot = el("circle", { r: 4, fill: color, stroke: "var(--bg)", "stroke-width": 2, display: "none" }, svg);
-      var rule = el("line", { y1: padT, y2: H - padB, stroke: "var(--muted)", "stroke-dasharray": "3 3", display: "none" }, svg);
+      var dot = el("rect", { width: 8, height: 8, fill: color, stroke: "var(--bg)", "stroke-width": 2, display: "none", transform: "rotate(45)" }, svg);
+      var rule = el("line", { y1: padT, y2: H - padB, stroke: "var(--gold)", "stroke-dasharray": "3 3", display: "none" }, svg);
 
       function show(clientX) {
         var r = svg.getBoundingClientRect(), px = (clientX - r.left) * (W / r.width);
         var i = Math.round((px - padL) / (W - padL - padR) * (s.length - 1));
         i = Math.max(0, Math.min(s.length - 1, i));
         var cx = x(i), cy = y(s[i].v);
-        dot.setAttribute("cx", cx); dot.setAttribute("cy", cy); dot.setAttribute("display", "");
+        dot.setAttribute("x", 0); dot.setAttribute("y", 0);
+        dot.setAttribute("transform", "translate(" + cx + "," + (cy - 5.6) + ") rotate(45)");
+        dot.setAttribute("display", "");
         rule.setAttribute("x1", cx); rule.setAttribute("x2", cx); rule.setAttribute("display", "");
         tip.innerHTML = "<b>" + fmt(s[i].v) + " gp</b><span>" + when(s[i].t) + "</span>";
         tip.style.display = "block";
-        tip.style.left = Math.max(60, Math.min(r.width - 60, cx * r.width / W)) + "px";
+        tip.style.left = Math.max(70, Math.min(r.width - 70, cx * r.width / W)) + "px";
         tip.style.top = (cy * r.height / H) + "px";
       }
       function hide() { dot.setAttribute("display", "none"); rule.setAttribute("display", "none"); tip.style.display = "none"; }
@@ -244,9 +337,9 @@
     function renderNews() {
       var ul = document.getElementById("news");
       var items = (hist.news || []);
-      if (!items.length) { ul.innerHTML = '<li class="empty">Quiet markets. No major events reported.</li>'; return; }
+      if (!items.length) { ul.innerHTML = '<li class="empty">The heralds report quiet markets. No proclamations today.</li>'; return; }
       ul.innerHTML = items.map(function (n) {
-        return '<li><div class="meta"><span>' + when(n.t) + '</span><span class="badge ' + cls(n.change) + '">' + n.tickers.join(", ") + " " + pct(n.change).replace(".00", "") + '</span></div>' +
+        return '<li><div class="meta"><span>' + when(n.t) + '</span><span class="tag ' + cls(n.change) + '">' + (n.change >= 0 ? "▲ " : "▼ ") + n.tickers.join(", ") + " " + pct(n.change).replace(".00", "") + '</span></div>' +
           '<div class="head"></div><div class="detail"></div></li>';
       }).join("");
       var lis = ul.querySelectorAll("li");
@@ -263,17 +356,17 @@
       renderDetail();
     });
     window.addEventListener("resize", function () { if (hist) renderDetail(); });
-    document.addEventListener("themechange", function () { if (hist) { renderCards(); renderDetail(); } });
+    document.addEventListener("themechange", function () { if (hist) { renderLedger(); renderDetail(); } });
 
     Promise.all([
       fetch("data/companies.json", { cache: "no-cache" }).then(function (r) { return r.json(); }),
       fetch("data/history.json", { cache: "no-cache" }).then(function (r) { return r.json(); })
     ]).then(function (res) {
       companies = res[0]; hist = res[1]; selected = companies[0].ticker;
-      document.getElementById("updated").textContent = "Last update: " + when(hist.ticks[hist.ticks.length - 1].t) + ".";
-      renderCards(); renderDetail(); renderNews();
+      document.getElementById("updated").textContent = "Last reckoned " + when(hist.ticks[hist.ticks.length - 1].t) + ".";
+      renderLedger(); renderDetail(); renderNews();
     }).catch(function () {
-      document.getElementById("d-name").textContent = "The exchange is closed right now. Try again soon.";
+      document.getElementById("d-name").textContent = "The exchange is closed. Return soon.";
     });
   })();
   </script>
