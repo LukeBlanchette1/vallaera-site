@@ -8,7 +8,7 @@
   <link rel="icon" href="/static/icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <script src="/assets/common.js"></script>
   <script src="/assets/vcal.js"></script>
   <link rel="stylesheet" href="/assets/common.css" />
@@ -28,11 +28,12 @@
       --c-holidays: #b9a2ff; --c-history: #f2c55c; --c-event: #ff8279; --c-league: #6ac6ff; --c-birthdays: #ff86bb; --c-season: #a3d6a8;
       --s-spring: #6fd283; --s-summer: #c6d43f; --s-autumn: #e8a44a; --s-winter: #70c4e4;
     }
-    html, body { background: var(--bg); font-family: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 16px; }
+    html, body { background: var(--bg); font-family: "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 16px; }
     .topbar { background: var(--panel); border-bottom: 1px solid var(--border); }
-    .site-switcher-btn, .theme-switch, .page-foot { font-family: "Nunito", system-ui, sans-serif; }
+    .site-switcher-btn, .theme-switch, .page-foot { font-family: "Roboto", system-ui, sans-serif; }
     .site-switcher-btn { font-size: 1.15rem; font-weight: 800; letter-spacing: 0; text-transform: none; }
-    .site-switcher-menu a { font-family: "Nunito", system-ui, sans-serif; font-size: 0.95rem; font-weight: 600; letter-spacing: 0; text-transform: none; }
+    .site-switcher-menu a { font-family: "Roboto", system-ui, sans-serif; font-size: 0.95rem; font-weight: 600; letter-spacing: 0; text-transform: none; }
+    .theme-switch .switch, .theme-switch .knob { border-radius: 0; }
     .theme-switch .switch { background: var(--panel-2); }
     main { max-width: 1240px; padding-top: 1.5rem; }
 
@@ -41,15 +42,15 @@
     .masthead .tagline { margin: 0.25rem 0 0; color: var(--muted); font-size: 1.05rem; min-height: 1.5em; }
 
     /* ---- calendar card ---- */
-    .cal { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+    .cal { background: var(--panel); border: 1px solid var(--border); border-radius: 0; overflow: hidden; }
     .calhead { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 0.75rem; padding: 0.9rem 1rem 0.75rem; }
     .monthhead { text-align: center; }
     .monthhead h2 { margin: 0; font-weight: 600; font-size: clamp(1.5rem, 3.4vw, 2.3rem); line-height: 1.15; color: var(--text); }
     .monthhead .season { color: var(--muted); font-weight: 600; font-size: 0.95rem; }
     .calhead .left { justify-self: start; }
     .calhead .right { justify-self: end; display: flex; gap: 0.5rem; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 4px; min-width: 40px; height: 40px; padding: 0 14px; font: inherit; font-weight: 700; font-size: 0.9rem; color: var(--text); background: var(--panel-2); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; }
-    .btn:hover { background: var(--hover); border-color: var(--accent); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 4px; min-width: 40px; height: 40px; padding: 0 14px; font: inherit; font-weight: 700; font-size: 0.9rem; color: var(--text); background: none; border: 1px solid var(--border); border-radius: 0; cursor: pointer; }
+    .btn:hover { background: var(--hover); }
     .btn.icon { padding: 0; width: 40px; font-size: 1.4rem; line-height: 1; }
 
     table.grid { width: 100%; border-collapse: collapse; table-layout: fixed; }
@@ -63,30 +64,31 @@
     .cell { display: flex; flex-direction: column; gap: 6px; padding: 10px 6px 12px; height: 100%; min-width: 0; }
     .num { font-weight: 600; font-size: 1.05rem; align-self: flex-start; min-width: 34px; height: 34px; margin: -4px 0 0 4px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; color: var(--text); }
     td.today .num { background: var(--today); color: #fff; }
-    .ev { font-size: 0.9rem; font-weight: 800; line-height: 1.1; color: var(--c); background: color-mix(in srgb, var(--c) 20%, transparent); border-radius: 7px; padding: 8px 10px; margin: 0 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .ev { font-size: 0.9rem; font-weight: 800; line-height: 1.1; color: var(--c); background: color-mix(in srgb, var(--c) 22%, transparent); border-radius: 3px; padding: 8px 10px; margin: 0 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .more { font-size: 0.8rem; color: var(--muted); font-weight: 600; padding-left: 8px; }
     .dots { display: none; gap: 3px; flex-wrap: wrap; padding-left: 4px; }
-    .dots i { width: 8px; height: 8px; border-radius: 50%; background: var(--c); display: block; }
-    .strip { position: absolute; left: 3px; right: 3px; bottom: 3px; height: 5px; border-radius: 2px; background: var(--s); }
+    .dots i { width: 8px; height: 8px; border-radius: 0; background: var(--c); display: block; }
+    .strip { position: absolute; left: 3px; right: 3px; bottom: 3px; height: 4px; border-radius: 0; background: var(--s); }
     .s-spring { --s: var(--s-spring); } .s-summer { --s: var(--s-summer); } .s-autumn { --s: var(--s-autumn); } .s-winter { --s: var(--s-winter); }
 
     .legend { display: flex; flex-wrap: wrap; gap: 0.4rem 0.6rem; padding: 0.8rem 1rem; border-top: 1px solid var(--border); font-size: 0.9rem; }
-    .legend span { display: inline-flex; align-items: center; gap: 6px; color: var(--c); background: color-mix(in srgb, var(--c) 18%, transparent); border-radius: 999px; padding: 3px 11px; font-weight: 700; }
-    .legend i { display: none; }
+    .legend { gap: 0.4rem 1.4rem; }
+    .legend span { display: inline-flex; align-items: center; gap: 7px; color: var(--muted); font-weight: 500; }
+    .legend i { display: block; width: 11px; height: 11px; background: var(--c); border-radius: 0; }
 
-    .daybox { margin-top: 1rem; border: 1px solid var(--border); background: var(--panel); border-radius: 10px; padding: 1rem 1.25rem; }
+    .daybox { margin-top: 1rem; border: 1px solid var(--border); background: var(--panel); border-radius: 0; padding: 1rem 1.25rem; }
     .daybox h3 { margin: 0 0 0.5rem; font-size: 1.1rem; font-weight: 800; }
     .daybox p.ev { white-space: normal; margin: 0.35rem 0; display: block; }
     .daybox p { margin: 0.25rem 0; }
 
     .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 1.25rem; }
-    .panel { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.25rem 0.5rem; }
+    .panel { background: var(--panel); border: 1px solid var(--border); border-radius: 0; padding: 1rem 1.25rem 0.5rem; }
     h3.sec { font-weight: 800; font-size: 1.1rem; color: var(--text); margin: 0 0 0.6rem; }
     .list { list-style: none; margin: 0; padding: 0; }
     .list li { padding: 0.65rem 0; border-top: 1px solid var(--border); display: grid; grid-template-columns: 7.5rem 1fr; gap: 0.75rem; align-items: center; }
     .list .when { font-weight: 700; font-size: 0.9rem; color: var(--muted); }
     .list .what { font-weight: 700; line-height: 1.3; }
-    .list .what small { display: inline-block; margin-top: 3px; font-weight: 700; font-size: 0.75rem; color: var(--c); background: color-mix(in srgb, var(--c) 18%, transparent); border-radius: 999px; padding: 1px 9px; }
+    .list .what small { display: inline-block; margin-top: 2px; font-weight: 700; font-size: 0.8rem; color: var(--c); }
     .list .empty { display: block; color: var(--muted); text-align: center; padding: 1rem 0; }
 
     footer.page-foot { color: var(--muted); }
@@ -202,7 +204,7 @@
       var lg = $("legend"); lg.innerHTML = "";
       cal.categories.forEach(function (c) {
         var s = document.createElement("span"); s.style.setProperty("--c", "var(--c-" + c.id + ")");
-        s.textContent = c.name; lg.appendChild(s);
+        s.appendChild(document.createElement("i")); s.appendChild(document.createTextNode(c.name)); lg.appendChild(s);
       });
     }
 
