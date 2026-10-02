@@ -224,8 +224,13 @@
     function fmt(n) { return n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
     function pct(n) { return (n >= 0 ? "+" : "−") + Math.abs(n).toFixed(2) + "%"; }
     function cls(n) { return n >= 0 ? "up" : "down"; }
+    // Dates use the Vallaera calendar: the twelve months in order, with the real day of the month.
+    var MONTHS = ["Newrise", "Driftsweep", "Rainwend", "Greenbloom", "Stormbridge", "Sunreach",
+                  "Starfall", "Oldsol", "Brunlef", "Bundelreth", "Crowfoot", "Chill-Writ"];
+    function vday(d) { return MONTHS[d.getMonth()] + " " + d.getDate(); }
     function when(t) {
-      return new Date(t).toLocaleString(undefined, { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
+      var d = new Date(t);
+      return vday(d) + ", " + d.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" });
     }
     function series(ticker) { return hist.ticks.map(function (k) { return { t: k.t, v: k.p[ticker] }; }); }
     function changeOver(s, n) {
@@ -303,7 +308,7 @@
       }
       [0, Math.floor((s.length - 1) / 2), s.length - 1].forEach(function (i, k) {
         var tx = el("text", { x: x(i), y: H - 6, fill: "var(--muted)", "font-size": 13, "text-anchor": k === 0 ? "start" : k === 2 ? "end" : "middle" }, svg);
-        tx.textContent = new Date(s[i].t).toLocaleDateString(undefined, { month: "short", day: "numeric" });
+        tx.textContent = vday(new Date(s[i].t));
       });
 
       var pts = s.map(function (p, i) { return x(i).toFixed(1) + "," + y(p.v).toFixed(1); });
