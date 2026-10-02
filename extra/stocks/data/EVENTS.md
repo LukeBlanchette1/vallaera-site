@@ -26,5 +26,5 @@ The next update (within a few minutes of saving, or at most 4 hours) applies it.
 | `headline` / `detail` | Shown in the "Market news" list on the Stocks page. |
 | `spread` | Optional. How many updates the move is spread across (default 4), so it looks like a trend instead of one jump. |
 
-Tickers: `ONYX` (Onyx Emporium), `SCRY` (Scrolls and Scries), `WSSC` (West Sea Shipping Company).
+Tickers: `ONYX` (Onyx Emporium), `SCRY` (Scrolls and Scries), `WSSC` (West Sea Shipping Company), `ASHW` (Ashwick Vineyards), `SADD` (Saddiq's Menagerie), `KTCO` (Krettlam Trading Company).
 Keep earlier events in the file, since the `id` is how the game remembers they were already applied.

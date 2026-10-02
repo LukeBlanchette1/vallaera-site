@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The Vallaera Exchange</title>
-  <meta name="description" content="The Vallaera stock exchange: Onyx Emporium, Scrolls and Scries and the West Sea Shipping Company." />
+  <meta name="description" content="The Vallaera stock exchange: the finest companies in all of Vallaera." />
   <link rel="icon" href="/static/icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -90,7 +90,7 @@
     .ledger tbody tr.selected { background: var(--accent-soft); box-shadow: inset 4px 0 0 var(--gold); }
     .co-name { font-family: "Cinzel", Georgia, serif; font-weight: 700; font-size: 1.02rem; letter-spacing: 0.03em; }
     .co-meta { color: var(--muted); font-style: italic; font-size: 0.95rem; }
-    .co-tick { font-family: "Cinzel", Georgia, serif; font-size: 0.7rem; letter-spacing: 0.14em; color: var(--gold); margin-right: 0.5rem; font-style: normal; }
+    .co-tick { font-family: "Cinzel", Georgia, serif; font-size: 0.7rem; letter-spacing: 0.14em; color: var(--gold); font-style: normal; }
     .px { font-weight: 600; font-size: 1.25rem; }
     .px small { font-size: 0.8rem; color: var(--muted); font-weight: 400; margin-left: 3px; }
     .spark { width: 130px; height: 34px; display: block; margin-left: auto; }
@@ -133,7 +133,7 @@
     .news .head { font-family: "Cinzel", Georgia, serif; font-weight: 700; font-size: 1.1rem; margin-top: 0.25rem; letter-spacing: 0.02em; }
     .news .detail { margin-top: 0.2rem; line-height: 1.55; }
     .empty { text-align: center; color: var(--muted); font-style: italic; padding: 1.5rem 0 !important; }
-    .note { text-align: center; color: var(--muted); font-style: italic; margin-top: 2.5rem; }
+    .page-foot .tm { font-size: 0.5em; vertical-align: super; margin-left: 2px; letter-spacing: 0; }
 
     @media (max-width: 800px) {
       html, body { font-size: 17px; }
@@ -172,7 +172,7 @@
       <div class="flourish"><i></i></div>
       <h1>The Vallaera Exchange</h1>
       <div class="flourish"><i></i></div>
-      <p class="tagline">Trade of the nine continents, reckoned in gold pieces. <span id="updated"></span></p>
+      <p class="tagline">The finest companies in all of Vallaera.</p>
     </div>
 
     <table class="ledger" id="ledger">
@@ -202,13 +202,13 @@
       <div class="stats" id="stats"></div>
     </section>
 
-    <h2 class="section">Proclamations</h2>
+    <h2 class="section">Updates from the Coop</h2>
     <ul class="news" id="news"></ul>
 
-    <p class="note">All companies named here are fictional and belong to the world of Vallaera.</p>
+
   </main>
 
-  <footer class="page-foot">The Vallaera Exchange</footer>
+  <footer class="page-foot">The Vallaera Exchange<sup class="tm">TM</sup></footer>
 
   <script>
   (function () {
@@ -252,14 +252,14 @@
         var tr = document.createElement("tr");
         if (c.ticker === selected) tr.className = "selected";
         tr.innerHTML =
-          '<td><div class="co-name"></div><div class="co-meta"><span class="co-tick"></span><span class="co-tag"></span></div></td>' +
+          '<td><div class="co-name"></div><div class="co-meta"><span class="co-tick"></span></div></td>' +
           '<td class="px">' + fmt(last) + '<small>gp</small></td>' +
           '<td class="' + cls(d1) + '">' + (d1 >= 0 ? "▲ " : "▼ ") + pct(d1) + '</td>' +
           '<td class="hide-sm ' + cls(d7) + '">' + (d7 >= 0 ? "▲ " : "▼ ") + pct(d7) + '</td>' +
           '<td class="hide-sm"></td>';
         tr.querySelector(".co-name").textContent = c.name;
         tr.querySelector(".co-tick").textContent = c.ticker;
-        tr.querySelector(".co-tag").textContent = c.tagline;
+
         var svg = document.createElementNS(NS, "svg");
         svg.setAttribute("class", "spark");
         tr.lastChild.appendChild(svg);
@@ -337,7 +337,7 @@
     function renderNews() {
       var ul = document.getElementById("news");
       var items = (hist.news || []);
-      if (!items.length) { ul.innerHTML = '<li class="empty">The heralds report quiet markets. No proclamations today.</li>'; return; }
+      if (!items.length) { ul.innerHTML = '<li class="empty">No news from J.J. Coopers... Must be a slow day.</li>'; return; }
       ul.innerHTML = items.map(function (n) {
         return '<li><div class="meta"><span>' + when(n.t) + '</span><span class="tag ' + cls(n.change) + '">' + (n.change >= 0 ? "▲ " : "▼ ") + n.tickers.join(", ") + " " + pct(n.change).replace(".00", "") + '</span></div>' +
           '<div class="head"></div><div class="detail"></div></li>';
@@ -363,7 +363,7 @@
       fetch("data/history.json", { cache: "no-cache" }).then(function (r) { return r.json(); })
     ]).then(function (res) {
       companies = res[0]; hist = res[1]; selected = companies[0].ticker;
-      document.getElementById("updated").textContent = "Last reckoned " + when(hist.ticks[hist.ticks.length - 1].t) + ".";
+
       renderLedger(); renderDetail(); renderNews();
     }).catch(function () {
       document.getElementById("d-name").textContent = "The exchange is closed. Return soon.";
