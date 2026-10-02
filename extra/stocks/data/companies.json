@@ -1,0 +1,26 @@
+[
+  {
+    "ticker": "ONYX",
+    "name": "Onyx Emporium",
+    "tagline": "Fine goods, rare gems and dark-stone luxuries",
+    "start": 142.5,
+    "vol": 0.012,
+    "drift": 0.0002
+  },
+  {
+    "ticker": "SCRY",
+    "name": "Scrolls and Scries",
+    "tagline": "Spell scrolls, scrying services and arcane supplies",
+    "start": 68.2,
+    "vol": 0.022,
+    "drift": 0.0003
+  },
+  {
+    "ticker": "WSSC",
+    "name": "West Sea Shipping Company",
+    "tagline": "Cargo and passage across the western waters",
+    "start": 94.75,
+    "vol": 0.016,
+    "drift": 0.0002
+  }
+]

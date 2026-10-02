@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Feedback</title>
+  <meta name="description" content="Report a bug or suggest an improvement for the Vallaera wiki." />
+  <link rel="icon" href="/static/icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="/assets/common.js"></script>
+  <link rel="stylesheet" href="/assets/common.css" />
+  <style>
+    form { max-width: 640px; display: grid; gap: 1rem; }
+    label { display: grid; gap: 6px; font-weight: 600; font-size: 0.9rem; }
+    label small { font-weight: 400; color: var(--muted); }
+    input, select, textarea {
+      font: inherit; font-weight: 400; color: var(--text); background: var(--panel);
+      border: 1px solid var(--border); border-radius: 12px; padding: 10px 14px; width: 100%;
+    }
+    textarea { min-height: 160px; resize: vertical; line-height: 1.5; }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+    button.send {
+      font: inherit; font-weight: 700; color: var(--bg); background: var(--text); border: none;
+      border-radius: 12px; padding: 11px 22px; cursor: pointer; justify-self: start;
+    }
+    button.send:disabled { opacity: 0.45; cursor: not-allowed; }
+    .msg { padding: 0.8rem 1rem; border-radius: 12px; border: 1px solid var(--border); background: var(--panel); max-width: 640px; line-height: 1.5; }
+    .msg.ok { border-color: var(--up); }
+    .msg.err { border-color: var(--down); }
+    .hp { position: absolute; left: -9999px; height: 0; overflow: hidden; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="site-switcher">
+      <button class="site-switcher-btn" aria-haspopup="menu" aria-expanded="false">
+        <span>Feedback</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </button>
+      <ul class="site-switcher-menu" role="menu" hidden>
+        <li><a role="menuitem" href="/">Vallaera Wiki</a></li>
+        <li><a role="menuitem" href="/stocks/">Vallaera Stocks</a></li>
+        <li><a role="menuitem" href="/feedback/" aria-current="page">Feedback</a></li>
+      </ul>
+    </div>
+    <button class="theme-switch" aria-label="Toggle light and dark mode">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"></path></svg>
+      <span class="switch"><span class="knob"></span></span>
+    </button>
+  </header>
+
+  <main>
+    <h1>Feedback</h1>
+    <p class="lead">Found a bug, a broken link or a missing image, or have an idea? Let us know.</p>
+
+    <div id="status" class="msg" hidden></div>
+
+    <form id="form" novalidate>
+      <label>What is this about?
+        <select name="type">
+          <option>Bug or broken page</option>
+          <option>Suggestion</option>
+          <option>Something else</option>
+        </select>
+      </label>
+      <label>Message
+        <textarea name="message" required placeholder="What happened, or what would you like to see?"></textarea>
+      </label>
+      <label>Page <small>(optional, which page were you on?)</small>
+        <input name="page" type="text" />
+      </label>
+      <label>Name or email <small>(optional, only if you want a reply)</small>
+        <input name="contact" type="text" autocomplete="off" />
+      </label>
+      <div class="hp" aria-hidden="true"><label>Leave this empty <input name="_gotcha" type="text" tabindex="-1" autocomplete="off" /></label></div>
+      <button class="send" type="submit">Send feedback</button>
+    </form>
+  </main>
+
+  <footer class="page-foot">Vallaera</footer>
+
+  <script src="config.js"></script>
+  <script>
+  (function () {
+    var form = document.getElementById("form"), status = document.getElementById("status");
+    var endpoint = window.FEEDBACK_ENDPOINT || "";
+    var ref = document.referrer;
+    try { if (ref && new URL(ref).origin === location.origin) form.elements.page.value = new URL(ref).pathname; } catch (e) {}
+
+    function say(text, kind) { status.hidden = false; status.className = "msg " + (kind || ""); status.textContent = text; }
+
+    if (!endpoint) {
+      say("The feedback form isn't connected yet, so messages can't be sent right now.", "err");
+      form.querySelector("button.send").disabled = true;
+    }
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (!endpoint) return;
+      var d = new FormData(form);
+      if (d.get("_gotcha")) return;
+      if (!String(d.get("message") || "").trim()) { say("Please write a message first.", "err"); return; }
+      var btn = form.querySelector("button.send"); btn.disabled = true; btn.textContent = "Sending…";
+      fetch(endpoint, { method: "POST", headers: { Accept: "application/json" }, body: d })
+        .then(function (r) {
+          if (!r.ok) throw new Error("bad status");
+          form.reset(); say("Thank you! Your feedback was sent.", "ok");
+        })
+        .catch(function () { say("Something went wrong sending that. Please try again in a bit.", "err"); })
+        .then(function () { btn.disabled = false; btn.textContent = "Send feedback"; });
+    });
+  })();
+  </script>
+</body>
+</html>
