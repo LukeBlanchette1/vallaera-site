@@ -1,0 +1,51 @@
+{
+  "name": "Anathan Calendar",
+  "firstDay": 0,
+  "seasons": [
+    { "name": "Spring", "startMonth": 2, "months": 3 },
+    { "name": "Summer", "startMonth": 5, "months": 3 },
+    { "name": "Autumn", "startMonth": 8, "months": 3 },
+    { "name": "Winter", "startMonth": 11, "months": 3 }
+  ],
+  "categories": [
+    { "id": "holidays", "name": "Holidays" },
+    { "id": "history", "name": "History" },
+    { "id": "event", "name": "Event" },
+    { "id": "league", "name": "Anathor's League" },
+    { "id": "birthdays", "name": "Birthdays" },
+    { "id": "season", "name": "Seasons" }
+  ],
+  "events": [
+    { "id": "spring-begins", "name": "Spring Begins", "cat": "season", "month": 2, "day": 1 },
+    { "id": "summer-begins", "name": "Summer Begins", "cat": "season", "month": 5, "day": 1 },
+    { "id": "autumn-begins", "name": "Autumn Begins", "cat": "season", "month": 8, "day": 1 },
+    { "id": "winter-begins", "name": "Winter Begins", "cat": "season", "month": 11, "day": 1 },
+    { "id": "new-year", "name": "Celebration of the New Year", "cat": "holidays", "month": 0, "day": 1 },
+    { "id": "tenday-of-ash", "name": "The Tenday of Ash", "cat": "holidays", "month": 1, "day": 2, "dayEnd": 10 },
+    { "id": "anathors-day", "name": "Anathor's Day", "cat": "holidays", "month": 7, "day": 15 },
+    { "id": "league-final", "name": "Final Showdown of Anathor's League", "cat": "event", "month": 7, "day": 15, "year": 622 },
+    { "id": "imogene-death", "name": "Imogene's Death", "cat": "history", "month": 4, "day": 25, "year": 622 },
+    { "id": "cai-keeva-swords", "name": "Cai and Keeva Join the Swords", "cat": "history", "month": 5, "day": 4, "year": 622 },
+    { "id": "rune-bowl", "name": "Rune Bowl in Dragonskeep", "cat": "league", "month": 5, "day": 18, "year": 622 },
+    { "id": "dust-bowl", "name": "Dust Bowl in the Djerith Highlands", "cat": "league", "month": 5, "day": 24, "year": 622 },
+    { "id": "kings-bowl", "name": "King's Bowl in the Mindrak Dynasty", "cat": "league", "month": 6, "day": 9, "year": 622 },
+    { "id": "gem-bowl", "name": "Gem Bowl in Glimmerworth", "cat": "league", "month": 6, "day": 15, "year": 622 },
+    { "id": "sea-bowl", "name": "Sea Bowl in Dozal", "cat": "league", "month": 7, "day": 3, "year": 622 },
+    { "id": "boatcrecia", "name": "Fat Larry Finishes the Boatcrecia", "cat": "event", "month": 5, "day": 8, "year": 622 },
+    { "id": "swords-of-shuss", "name": "The Swords of Shuss meet for the first time", "cat": "history", "month": 6, "day": 13, "year": 622 },
+    { "id": "tarxis-dies", "name": "Tarxis Dies", "cat": "history", "month": 6, "day": 30, "year": 622 },
+    { "id": "lucretia-bday", "name": "Lucretia's Birthday", "cat": "birthdays", "month": 11, "day": 13 },
+    { "id": "siege-stonerest", "name": "Siege of Stonerest", "cat": "history", "month": 7, "day": 28 },
+    { "id": "hearthfall-bombed", "name": "Hearthfall is bombed", "cat": "history", "month": 8, "day": 6 },
+    { "id": "harvest-day", "name": "Harvest Day", "cat": "holidays", "month": 8, "day": 14 },
+    { "id": "murf-dies", "name": "Murf Dies", "cat": "history", "month": 10, "day": 26 },
+    { "id": "new-years-eve", "name": "New Year's Eve", "cat": "holidays", "month": 11, "day": 30 },
+    { "id": "dima-bday", "name": "Dima's Birthday", "cat": "birthdays", "month": 7, "day": 14 },
+    { "id": "day-of-deliverance", "name": "Day of Deliverance", "cat": "holidays", "month": 1, "day": 11 },
+    { "id": "raindance", "name": "Raindance", "cat": "holidays", "month": 2, "day": 3 },
+    { "id": "keeva-bday", "name": "Keeva's Birthday", "cat": "birthdays", "month": 5, "day": 27 },
+    { "id": "myra-bday", "name": "Myra's Birthday", "cat": "birthdays", "month": 2, "day": 15 },
+    { "id": "caius-bday", "name": "Caius's Birthday", "cat": "birthdays", "month": 9, "day": 27 },
+    { "id": "treaty", "name": "Mindrakkian-Thalrunian Treaty Signed", "cat": "history", "month": 5, "day": 7 }
+  ]
+}

@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <script src="/assets/common.js"></script>
+  <script src="/assets/vcal.js"></script>
   <link rel="stylesheet" href="/assets/common.css" />
   <style>
     /* ===== The Exchange: a merchant's ledger. Sharp corners, ink and gold. ===== */
@@ -151,6 +152,7 @@
       <ul class="site-switcher-menu" role="menu" hidden>
         <li><a role="menuitem" href="/">Vallaera Wiki</a></li>
         <li><a role="menuitem" href="/stocks/" aria-current="page">Vallaera Stocks</a></li>
+        <li><a role="menuitem" href="/calendar/">Vallaera Calendar</a></li>
         <li><a role="menuitem" href="/feedback/">Feedback</a></li>
       </ul>
     </div>
@@ -218,7 +220,11 @@
     // Dates use the Vallaera calendar: the twelve months in order, with the real day of the month.
     var MONTHS = ["Newrise", "Driftsweep", "Rainwend", "Greenbloom", "Stormbridge", "Sunreach",
                   "Starfall", "Oldsol", "Brunlef", "Bundelreth", "Crowfoot", "Chill-Writ"];
-    function vday(d) { return MONTHS[d.getMonth()] + " " + d.getDate(); }
+    // In-world date from the calendar anchor; falls back to the renamed real month if it is unavailable.
+    function vday(d) {
+      var w = window.Vcal && Vcal.atReal(d.getTime());
+      return w ? Vcal.label(w) : MONTHS[d.getMonth()] + " " + d.getDate();
+    }
     function when(t) {
       var d = new Date(t);
       return vday(d) + ", " + d.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" });
@@ -354,9 +360,11 @@
 
     Promise.all([
       fetch("data/companies.json", { cache: "no-cache" }).then(function (r) { return r.json(); }),
-      fetch("data/history.json", { cache: "no-cache" }).then(function (r) { return r.json(); })
+      fetch("data/history.json", { cache: "no-cache" }).then(function (r) { return r.json(); }),
+      fetch("/calendar/data/today.json", { cache: "no-cache" }).then(function (r) { return r.json(); }).catch(function () { return null; })
     ]).then(function (res) {
       companies = res[0]; hist = res[1]; selected = companies[0].ticker;
+      if (window.Vcal) Vcal.init(res[2]);
 
       renderLedger(); renderDetail(); renderNews();
     }).catch(function () {

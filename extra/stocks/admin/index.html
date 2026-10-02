@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
   <script src="/assets/common.js"></script>
+  <script src="/assets/vcal.js"></script>
   <link rel="stylesheet" href="/assets/common.css" />
   <style>
     :root {
@@ -98,6 +99,7 @@
       <ul class="site-switcher-menu" role="menu" hidden>
         <li><a role="menuitem" href="/">Vallaera Wiki</a></li>
         <li><a role="menuitem" href="/stocks/">Vallaera Stocks</a></li>
+        <li><a role="menuitem" href="/calendar/">Vallaera Calendar</a></li>
         <li><a role="menuitem" href="/feedback/">Feedback</a></li>
       </ul>
     </div>
@@ -180,6 +182,73 @@
       </form>
     </section>
 
+    <section class="frame" id="date-box" hidden>
+      <h2>In-World Date</h2>
+      <p class="summary" id="today-now"></p>
+      <div id="date-msg" class="msg" hidden></div>
+      <div class="row">
+        <div class="field">
+          <label for="d-month">Month</label>
+          <select id="d-month"></select>
+        </div>
+        <div class="field">
+          <label for="d-day">Day</label>
+          <input id="d-day" type="number" min="1" max="30" step="1" inputmode="numeric" />
+        </div>
+      </div>
+      <div class="field">
+        <label for="d-year">Year</label>
+        <input id="d-year" type="number" step="1" inputmode="numeric" />
+      </div>
+      <div style="display:flex;gap:0.6rem;flex-wrap:wrap">
+        <button class="go" id="d-set" type="button">Set Date</button>
+        <button class="go" id="d-plus1" type="button" style="background:none;color:var(--gold)">+1 Day</button>
+        <button class="go" id="d-plus10" type="button" style="background:none;color:var(--gold)">+10 Days</button>
+      </div>
+    </section>
+
+    <section class="frame" id="calev-box" hidden>
+      <h2>Add Calendar Event</h2>
+      <div id="calev-msg" class="msg" hidden></div>
+      <form id="calev-form" novalidate>
+        <div class="field">
+          <label for="ce-name">Name</label>
+          <input id="ce-name" type="text" maxlength="100" />
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="ce-cat">Category</label>
+            <select id="ce-cat"></select>
+          </div>
+          <div class="field">
+            <label for="ce-month">Month</label>
+            <select id="ce-month"></select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="ce-day">Day</label>
+            <input id="ce-day" type="number" min="1" max="30" step="1" inputmode="numeric" />
+          </div>
+          <div class="field">
+            <label for="ce-year">Year</label>
+            <input id="ce-year" type="number" step="1" inputmode="numeric" />
+          </div>
+        </div>
+        <div class="field">
+          <span class="lab">Repeats</span>
+          <div class="chips">
+            <label><input type="radio" name="ce-rep" value="once" checked /><span>This year only</span></label>
+            <label><input type="radio" name="ce-rep" value="yearly" /><span>Every year</span></label>
+          </div>
+        </div>
+        <div class="field">
+          <label for="ce-desc">Details <span style="text-transform:none;letter-spacing:0;font-family:inherit;font-weight:400">(optional)</span></label>
+          <textarea id="ce-desc" maxlength="300"></textarea>
+        </div>
+        <button class="go" id="ce-add" type="submit">Add Event</button>
+      </form>
+    </section>
     <section class="frame" id="recent-box" hidden>
       <h2>Recent World Events</h2>
       <table class="recent"><thead><tr><th>Headline</th><th>Who</th><th>Move</th><th>Status</th></tr></thead><tbody id="recent"></tbody></table>
@@ -221,8 +290,8 @@
     // ---- connect / disconnect ----
     function render() {
       var has = !!getToken();
-      show("connect", !has); show("composer", has); show("recent-box", has);
-      if (has) loadRecent();
+      show("connect", !has); show("composer", has); show("recent-box", has); show("date-box", has); show("calev-box", has);
+      if (has) { loadRecent(); loadWorld(); }
     }
 
     $("save-token").addEventListener("click", function () {
@@ -370,6 +439,100 @@
       });
     }
 
+    // ---- in-world date + calendar events ----
+    var CAL_FILE = "extra/calendar/data/calendar.json", TODAY_FILE = "extra/calendar/data/today.json";
+    var calCats = [], curDate = null;
+
+    // read a JSON file from the repo, change it, and write it back (retries once on a conflict)
+    function updateFile(path, mutate, message, attempt) {
+      attempt = attempt || 0;
+      var url = API + "/contents/" + path;
+      return fetch(url + "?ref=" + BRANCH, { headers: headers(), cache: "no-store" }).then(function (r) {
+        if (r.status === 401 || r.status === 403) throw new Error("GitHub refused the key. Use \u201cForget key\u201d and connect a new one.");
+        if (r.status === 404) throw new Error("That file isn't published yet.");
+        if (!r.ok) throw new Error("Could not read the file (" + r.status + ").");
+        return r.json();
+      }).then(function (file) {
+        var data; try { data = JSON.parse(b64decode(file.content)); } catch (e) { throw new Error("The file looks damaged, so I left it alone."); }
+        var next = mutate(data);
+        return fetch(url, {
+          method: "PUT",
+          headers: Object.assign({ "Content-Type": "application/json" }, headers()),
+          body: JSON.stringify({ message: message, content: b64encode(JSON.stringify(next, null, 2) + "\n"), sha: file.sha, branch: BRANCH })
+        });
+      }).then(function (r) {
+        if (r.status === 409 && attempt < 2) return updateFile(path, mutate, message, attempt + 1);
+        if (!r.ok) throw new Error("Could not save (" + r.status + ").");
+      });
+    }
+
+    function fillMonths(sel) {
+      sel.innerHTML = "";
+      Vcal.MONTHS.forEach(function (m, i) { var o = document.createElement("option"); o.value = i; o.textContent = m; sel.appendChild(o); });
+    }
+
+    function loadWorld() {
+      fillMonths($("d-month")); fillMonths($("ce-month"));
+      // read the freshest saved date straight from the repo (the public file lags a couple of minutes behind)
+      fetch(API + "/contents/" + TODAY_FILE + "?ref=" + BRANCH, { headers: headers(), cache: "no-store" }).then(function (r) {
+        if (!r.ok) throw new Error("api");
+        return r.json().then(function (f) { return JSON.parse(b64decode(f.content)); });
+      }).catch(function () {
+        return fetch("/calendar/data/today.json", { cache: "no-store" }).then(function (r) { return r.json(); });
+      }).then(function (t) {
+        Vcal.init(t); var d = Vcal.today(); curDate = d;
+        if (d) {
+          $("today-now").textContent = "Today in Vallaera is " + Vcal.fullLabel(d) + ". It moves forward one day for each real day.";
+          $("d-month").value = d.month; $("d-day").value = d.day; $("d-year").value = d.year;
+          $("ce-month").value = d.month; $("ce-day").value = d.day; $("ce-year").value = d.year;
+        }
+      }).catch(function () { $("today-now").textContent = "Could not read today's date."; });
+      fetch("/calendar/data/calendar.json", { cache: "no-store" }).then(function (r) { return r.json(); }).then(function (c) {
+        var sel = $("ce-cat"); sel.innerHTML = "";
+        c.categories.forEach(function (k) { var o = document.createElement("option"); o.value = k.id; o.textContent = k.name; sel.appendChild(o); });
+      }).catch(function () {});
+    }
+
+    function setDate(d, btn, label) {
+      var year = d.year, month = d.month, day = d.day;
+      if (!(year >= 0) || month < 0 || month > 11 || !(day >= 1 && day <= 30)) return say("date-msg", "Enter a month, a day from 1 to 30, and a year.", "err");
+      btn.disabled = true;
+      updateFile(TODAY_FILE, function () {
+        return { anchor: new Date().toISOString(), year: year, month: month, day: day, rolloverUtcHour: 4 };
+      }, "In-world date: " + Vcal.MONTHS[month] + " " + day + ", " + year).then(function () {
+        say("date-msg", "Done. Today is now " + Vcal.MONTHS[month] + " " + day + ", " + year + ". The site updates in about 2 minutes.", "ok");
+        $("today-now").textContent = "Today in Vallaera is " + Vcal.MONTHS[month] + " " + day + ", " + year + ".";
+        $("d-month").value = month; $("d-day").value = day; $("d-year").value = year;
+        curDate = { year: year, month: month, day: day };
+      }).catch(function (e) { say("date-msg", e.message || "Something went wrong. Nothing was changed.", "err"); })
+        .then(function () { btn.disabled = false; });
+    }
+    function formDate() { return { year: parseInt($("d-year").value, 10), month: parseInt($("d-month").value, 10), day: parseInt($("d-day").value, 10) }; }
+    $("d-set").addEventListener("click", function () { setDate(formDate(), this); });
+    function shift(k, btn) {
+      var base = curDate || formDate();
+      setDate(Vcal.addDays(base, k), btn);
+    }
+    $("d-plus1").addEventListener("click", function () { shift(1, this); });
+    $("d-plus10").addEventListener("click", function () { shift(10, this); });
+
+    $("calev-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var name = $("ce-name").value.trim(), day = parseInt($("ce-day").value, 10), month = parseInt($("ce-month").value, 10), year = parseInt($("ce-year").value, 10);
+      var yearly = document.querySelector('input[name="ce-rep"]:checked').value === "yearly";
+      if (!name) return say("calev-msg", "Give the event a name.", "err");
+      if (!(day >= 1 && day <= 30)) return say("calev-msg", "The day must be from 1 to 30.", "err");
+      if (!yearly && !(year >= 0)) return say("calev-msg", "Enter the year, or choose Every year.", "err");
+      var ev = { id: "web-" + Date.now(), name: name, cat: $("ce-cat").value, month: month, day: day };
+      if (!yearly) ev.year = year;
+      var desc = $("ce-desc").value.trim(); if (desc) ev.desc = desc;
+      var btn = $("ce-add"); btn.disabled = true;
+      updateFile(CAL_FILE, function (c) { c.events.push(ev); return c; }, "Calendar event: " + name).then(function () {
+        say("calev-msg", "Added. The calendar updates in about 2 minutes.", "ok");
+        $("ce-name").value = ""; $("ce-desc").value = "";
+      }).catch(function (err) { say("calev-msg", err.message || "Something went wrong. Nothing was changed.", "err"); })
+        .then(function () { btn.disabled = false; });
+    });
     fetch("../data/companies.json", { cache: "no-cache" }).then(function (r) { return r.json(); }).then(function (c) {
       companies = c; buildChips(); render();
     }).catch(function () { render(); });

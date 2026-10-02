@@ -36,6 +36,11 @@ const PageTitle: QuartzComponent = ({ fileData, cfg, displayClass }: QuartzCompo
           </a>
         </li>
         <li>
+          <a role="menuitem" href="/calendar/" data-router-ignore>
+            Vallaera Calendar
+          </a>
+        </li>
+        <li>
           <a role="menuitem" href="/feedback/" data-router-ignore>
             Feedback
           </a>

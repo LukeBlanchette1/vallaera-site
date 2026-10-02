@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Anathan Calendar</title>
+  <meta name="description" content="The Vallaera calendar: months, holidays, history and birthdays." />
+  <link rel="icon" href="/static/icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="/assets/common.js"></script>
+  <script src="/assets/vcal.js"></script>
+  <link rel="stylesheet" href="/assets/common.css" />
+  <style>
+    :root {
+      --gold: #8a6a1f; --bg: #efe3c2; --panel: #f6ecd2; --panel-2: #ead9ab; --border: #b79a62; --text: #35261a; --muted: #7a6a50;
+      --accent: #7c1d2b; --accent-soft: rgba(124, 29, 43, 0.08); --hover: rgba(90, 60, 20, 0.07);
+      --paper: radial-gradient(ellipse at 50% -10%, rgba(255, 250, 232, 0.55) 0%, rgba(255, 250, 232, 0) 62%);
+      --c-holidays: #6d3fb3; --c-history: #9a6b00; --c-event: #b3342d; --c-league: #1e6fa8; --c-birthdays: #b83d78; --c-season: #5f6b52;
+    }
+    :root[saved-theme="dark"] {
+      --gold: #c9a24d; --bg: #14110f; --panel: #1b1713; --panel-2: #241e17; --border: #4d4129; --text: #e9dfc6; --muted: #a69a80;
+      --accent: #e0b85c; --accent-soft: rgba(224, 184, 92, 0.1); --hover: rgba(233, 223, 198, 0.07);
+      --paper: radial-gradient(ellipse at 50% -10%, rgba(201, 162, 77, 0.06) 0%, rgba(201, 162, 77, 0) 62%);
+      --c-holidays: #a78bfa; --c-history: #e0b85c; --c-event: #e0655b; --c-league: #6cb7e8; --c-birthdays: #e58fb5; --c-season: #9aa88a;
+    }
+    html, body { background: var(--paper) fixed, var(--bg); font-family: "EB Garamond", Georgia, "Times New Roman", serif; font-size: 18px; }
+    .topbar { background: var(--panel); border-bottom: 1px solid var(--border); }
+    .site-switcher-btn, .page-foot, .theme-switch { font-family: "Cinzel", Georgia, serif; }
+    .site-switcher-btn { font-size: 1.05rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+    .site-switcher-menu a { font-family: "Cinzel", Georgia, serif; font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; }
+    .theme-switch .switch, .theme-switch .knob { border-radius: 0; }
+    main { max-width: 1100px; }
+
+    .masthead { text-align: center; margin: 1.5rem 0 1.5rem; }
+    .masthead h1 { display: block; border: none; margin: 0; padding: 0; font-family: "Cinzel", Georgia, serif; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; font-size: clamp(1.5rem, 4.5vw, 2.3rem); line-height: 1.15; color: var(--gold); }
+    .masthead .tagline { margin: 0.5rem 0 0; font-style: italic; color: var(--muted); font-size: 1.1rem; min-height: 1.5em; }
+
+    .controls { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+    .monthhead { text-align: center; flex: 1; min-width: 200px; }
+    .monthhead h2 { margin: 0; font-family: "Cinzel", Georgia, serif; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; font-size: 1.5rem; color: var(--text); }
+    .monthhead .season { color: var(--muted); font-style: italic; }
+    .btn { font-family: "Cinzel", Georgia, serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); background: none; border: 1px solid var(--border); border-radius: 0; padding: 8px 16px; cursor: pointer; }
+    .btn:hover { background: var(--hover); }
+    .nav-group { display: flex; gap: 0; }
+    .nav-group .btn + .btn { margin-left: -1px; }
+
+    table.grid { width: 100%; border-collapse: collapse; table-layout: fixed; border: 1px solid var(--border); background: var(--panel); }
+    table.grid th { font-family: "Cinzel", Georgia, serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding: 0.55rem 0.25rem; border-bottom: 3px double var(--gold); text-align: center; }
+    table.grid td { border: 1px solid var(--border); vertical-align: top; padding: 0; height: 104px; cursor: pointer; transition: background 0.12s ease; }
+    table.grid td:hover { background: var(--hover); }
+    table.grid td.sel { background: var(--accent-soft); box-shadow: inset 0 0 0 2px var(--gold); }
+    table.grid td.today .num { background: var(--gold); color: var(--bg); }
+    .cell { display: flex; flex-direction: column; gap: 3px; padding: 5px 6px 6px; height: 100%; min-width: 0; }
+    .num { font-family: "Cinzel", Georgia, serif; font-size: 0.85rem; font-weight: 700; align-self: flex-start; padding: 1px 6px; color: var(--text); }
+    .ev { font-size: 0.8rem; line-height: 1.2; border-left: 3px solid var(--c); padding-left: 5px; overflow: hidden; color: var(--text); display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow-wrap: anywhere; }
+    .more { font-size: 0.75rem; color: var(--muted); font-style: italic; padding-left: 8px; }
+    .dots { display: none; gap: 3px; flex-wrap: wrap; padding-left: 4px; }
+    .dots i { width: 7px; height: 7px; background: var(--c); display: block; }
+
+    .legend { display: flex; flex-wrap: wrap; gap: 0.4rem 1.25rem; margin: 0.9rem 0 0; font-size: 0.9rem; color: var(--muted); }
+    .legend span { display: inline-flex; align-items: center; gap: 6px; }
+    .legend i { width: 10px; height: 10px; background: var(--c); display: block; }
+
+    .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
+    h3.sec { font-family: "Cinzel", Georgia, serif; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-size: 1.05rem; color: var(--gold); margin: 0 0 0.7rem; }
+    .list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--border); }
+    .list li { padding: 0.75rem 0.25rem; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 7.5rem 1fr; gap: 0.75rem; align-items: baseline; }
+    .list .when { font-family: "Cinzel", Georgia, serif; font-size: 0.8rem; letter-spacing: 0.04em; color: var(--muted); }
+    .list .what { border-left: 3px solid var(--c); padding-left: 0.6rem; line-height: 1.35; }
+    .list .what small { display: block; color: var(--muted); font-style: italic; }
+    .list .empty { display: block; color: var(--muted); font-style: italic; text-align: center; border: none; }
+    .daybox { margin-top: 1rem; border: 1px solid var(--border); background: var(--panel); padding: 0.9rem 1.1rem; }
+    .daybox h3 { margin: 0 0 0.4rem; font-family: "Cinzel", Georgia, serif; font-size: 1rem; letter-spacing: 0.04em; }
+    .daybox p { margin: 0.2rem 0; }
+
+    @media (max-width: 800px) {
+      html, body { font-size: 17px; }
+      .cols { grid-template-columns: 1fr; gap: 1.5rem; }
+      table.grid th { font-size: 0; padding: 0.4rem 0; }
+      table.grid th::before { content: attr(data-abbr); font-size: 0.65rem; letter-spacing: 0.04em; }
+      table.grid td { height: 58px; }
+      .cell { padding: 3px 2px; }
+      .num { font-size: 0.75rem; padding: 0 3px; }
+      .ev, .more { display: none; }
+      .dots { display: flex; }
+      .list li { grid-template-columns: 6rem 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="site-switcher">
+      <button class="site-switcher-btn" aria-haspopup="menu" aria-expanded="false">
+        <span>Vallaera Calendar</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </button>
+      <ul class="site-switcher-menu" role="menu" hidden>
+        <li><a role="menuitem" href="/">Vallaera Wiki</a></li>
+        <li><a role="menuitem" href="/stocks/">Vallaera Stocks</a></li>
+        <li><a role="menuitem" href="/calendar/" aria-current="page">Vallaera Calendar</a></li>
+        <li><a role="menuitem" href="/feedback/">Feedback</a></li>
+      </ul>
+    </div>
+    <button class="theme-switch" aria-label="Toggle light and dark mode">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"></path></svg>
+      <span class="switch"><span class="knob"></span></span>
+    </button>
+  </header>
+
+  <main>
+    <div class="masthead">
+      <h1>The Anathan Calendar</h1>
+      <p class="tagline" id="today-line"></p>
+    </div>
+
+    <div class="controls">
+      <div class="nav-group">
+        <button class="btn" id="prev" aria-label="Previous month">&lsaquo; Prev</button>
+        <button class="btn" id="today-btn">Today</button>
+      </div>
+      <div class="monthhead"><h2 id="month-title">&nbsp;</h2><div class="season" id="season"></div></div>
+      <div class="nav-group"><button class="btn" id="next" aria-label="Next month">Next &rsaquo;</button></div>
+    </div>
+
+    <table class="grid" id="grid">
+      <thead><tr id="weekhead"></tr></thead>
+      <tbody id="weeks"></tbody>
+    </table>
+    <div class="legend" id="legend"></div>
+
+    <div class="daybox" id="daybox" hidden></div>
+
+    <div class="cols">
+      <section>
+        <h3 class="sec">This month</h3>
+        <ul class="list" id="month-list"></ul>
+      </section>
+      <section>
+        <h3 class="sec">Coming up</h3>
+        <ul class="list" id="upcoming"></ul>
+      </section>
+    </div>
+  </main>
+
+  <footer class="page-foot">The Vallaera Exchange<sup style="font-size:.5em;vertical-align:super">TM</sup></footer>
+
+  <script>
+  (function () {
+    var V = window.Vcal, cal = null, todayD = null, view = { year: 622, month: 0 }, selDay = null;
+    var $ = function (id) { return document.getElementById(id); };
+    var catName = {}, catKnown = {};
+
+    // ---- index events by date ----
+    var yearly = {}, once = {};
+    function indexEvents() {
+      yearly = {}; once = {};
+      cal.categories.forEach(function (c) { catName[c.id] = c.name; catKnown[c.id] = true; });
+      cal.events.forEach(function (e) {
+        var last = e.dayEnd || e.day;
+        for (var d = e.day; d <= last; d++) {
+          var key = e.year != null ? e.year + ":" + e.month + ":" + d : e.month + ":" + d;
+          var bucket = e.year != null ? once : yearly;
+          (bucket[key] = bucket[key] || []).push(e);
+        }
+      });
+    }
+    function eventsOn(y, m, d) { return (yearly[m + ":" + d] || []).concat(once[y + ":" + m + ":" + d] || []); }
+    function catClass(e) { return catKnown[e.cat] ? e.cat : "season"; }
+    function colorVar(e) { return "var(--c-" + catClass(e) + ")"; }
+    function seasonOf(m) {
+      for (var i = 0; i < cal.seasons.length; i++) {
+        var s = cal.seasons[i];
+        for (var k = 0; k < s.months; k++) if ((s.startMonth + k) % V.MPY === m) return s.name;
+      }
+      return "";
+    }
+    function weekdayOf(d) { return ((d - 1) + (cal.firstDay || 0)) % V.WEEK.length; }
+
+    function same(a, b) { return a && b && a.year === b.year && a.month === b.month && a.day === b.day; }
+
+    // ---- header, legend ----
+    function buildHead() {
+      var tr = $("weekhead"); tr.innerHTML = "";
+      V.WEEK.forEach(function (w) { var th = document.createElement("th"); th.textContent = w; th.setAttribute("data-abbr", w.slice(0, 3)); tr.appendChild(th); });
+      var lg = $("legend"); lg.innerHTML = "";
+      cal.categories.forEach(function (c) {
+        var s = document.createElement("span"); s.style.setProperty("--c", "var(--c-" + c.id + ")");
+        s.innerHTML = "<i></i><b style='font-weight:500'></b>"; s.querySelector("b").textContent = c.name; lg.appendChild(s);
+      });
+    }
+
+    // ---- month grid ----
+    function renderMonth() {
+      $("month-title").textContent = V.MONTHS[view.month] + ", " + view.year;
+      $("season").textContent = seasonOf(view.month);
+      var body = $("weeks"); body.innerHTML = "";
+      var cols = V.WEEK.length, off = (cal.firstDay || 0) % cols, d = 1, row;
+      for (var i = 0; i < V.DPM + off; i++) {
+        if (i % cols === 0) { row = document.createElement("tr"); body.appendChild(row); }
+        var td = document.createElement("td");
+        if (i >= off) {
+          (function (day) {
+            var evs = eventsOn(view.year, view.month, day);
+            var date = { year: view.year, month: view.month, day: day };
+            if (same(date, todayD)) td.className += " today";
+            if (selDay === day) td.className += " sel";
+            var cell = document.createElement("div"); cell.className = "cell";
+            var num = document.createElement("span"); num.className = "num"; num.textContent = day; cell.appendChild(num);
+            evs.slice(0, 3).forEach(function (e) {
+              var p = document.createElement("div"); p.className = "ev"; p.style.setProperty("--c", colorVar(e)); p.textContent = e.name; p.title = e.name; cell.appendChild(p);
+            });
+            if (evs.length > 3) { var m = document.createElement("div"); m.className = "more"; m.textContent = "+" + (evs.length - 3) + " more"; cell.appendChild(m); }
+            if (evs.length) {
+              var dots = document.createElement("div"); dots.className = "dots";
+              evs.forEach(function (e) { var i2 = document.createElement("i"); i2.style.setProperty("--c", colorVar(e)); dots.appendChild(i2); });
+              cell.appendChild(dots);
+            }
+            td.appendChild(cell);
+            td.addEventListener("click", function () { selDay = day; renderMonth(); renderDay(); });
+          })(d++);
+        }
+        row.appendChild(td);
+      }
+      // pad the last row
+      while (row.children.length < cols) row.appendChild(document.createElement("td"));
+    }
+
+    function line(listEl, whenText, e, dateHint) {
+      var li = document.createElement("li");
+      var w = document.createElement("span"); w.className = "when"; w.textContent = whenText;
+      var t = document.createElement("span"); t.className = "what"; t.style.setProperty("--c", colorVar(e));
+      t.textContent = e.name;
+      var s = document.createElement("small"); s.textContent = (catName[e.cat] || "Seasons") + (e.year != null ? "" : " · every year"); t.appendChild(s);
+      li.appendChild(w); li.appendChild(t); listEl.appendChild(li);
+    }
+
+    function renderLists() {
+      var ml = $("month-list"); ml.innerHTML = ""; var any = false;
+      for (var d = 1; d <= V.DPM; d++) {
+        eventsOn(view.year, view.month, d).forEach(function (e) { any = true; line(ml, V.MONTHS[view.month] + " " + d, e); });
+      }
+      if (!any) ml.innerHTML = '<li class="empty">Nothing marked this month.</li>';
+
+      var up = $("upcoming"); up.innerHTML = ""; var found = 0;
+      var n0 = V.toN(todayD.year, todayD.month, todayD.day);
+      for (var k = 0; k <= V.DPY * 2 && found < 8; k++) {
+        var dt = V.fromN(n0 + k);
+        eventsOn(dt.year, dt.month, dt.day).forEach(function (e) {
+          if (found >= 8) return; found++;
+          line(up, (k === 0 ? "Today" : V.label(dt) + (dt.year !== todayD.year ? ", " + dt.year : "")), e);
+        });
+      }
+      if (!found) up.innerHTML = '<li class="empty">Nothing coming up.</li>';
+    }
+
+    function renderDay() {
+      var box = $("daybox");
+      if (!selDay) { box.hidden = true; return; }
+      var evs = eventsOn(view.year, view.month, selDay);
+      box.hidden = false; box.innerHTML = "";
+      var h = document.createElement("h3"); h.textContent = V.WEEK[weekdayOf(selDay)] + ", " + V.MONTHS[view.month] + " " + selDay + ", " + view.year; box.appendChild(h);
+      if (!evs.length) { var p0 = document.createElement("p"); p0.style.color = "var(--muted)"; p0.style.fontStyle = "italic"; p0.textContent = "Nothing is marked on this day."; box.appendChild(p0); return; }
+      evs.forEach(function (e) {
+        var p = document.createElement("p"); p.className = "ev"; p.style.setProperty("--c", colorVar(e)); p.style.whiteSpace = "normal";
+        p.textContent = e.name + " (" + (catName[e.cat] || "Seasons") + ")"; box.appendChild(p);
+        if (e.desc) { var q = document.createElement("p"); q.style.color = "var(--muted)"; q.textContent = e.desc; box.appendChild(q); }
+      });
+    }
+
+    function go(delta) {
+      var m = view.month + delta, y = view.year;
+      while (m < 0) { m += V.MPY; y--; }
+      while (m >= V.MPY) { m -= V.MPY; y++; }
+      view = { year: y, month: m }; selDay = null; renderMonth(); renderLists(); renderDay();
+    }
+    $("prev").addEventListener("click", function () { go(-1); });
+    $("next").addEventListener("click", function () { go(1); });
+    $("today-btn").addEventListener("click", function () { view = { year: todayD.year, month: todayD.month }; selDay = todayD.day; renderMonth(); renderLists(); renderDay(); });
+    document.addEventListener("keydown", function (e) {
+      if (e.target && /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
+      if (e.key === "ArrowLeft") go(-1); else if (e.key === "ArrowRight") go(1);
+    });
+
+    Promise.all([
+      fetch("data/calendar.json", { cache: "no-cache" }).then(function (r) { return r.json(); }),
+      fetch("data/today.json", { cache: "no-cache" }).then(function (r) { return r.json(); })
+    ]).then(function (res) {
+      cal = res[0]; V.init(res[1]); todayD = V.today();
+      if (!todayD) throw new Error("no date");
+      indexEvents(); buildHead();
+      view = { year: todayD.year, month: todayD.month };
+      $("today-line").textContent = "Today is " + V.fullLabel(todayD) + ".";
+      selDay = todayD.day;
+      renderMonth(); renderLists(); renderDay();
+    }).catch(function () {
+      $("today-line").textContent = "The calendar could not be read right now.";
+    });
+  })();
+  </script>
+</body>
+</html>
