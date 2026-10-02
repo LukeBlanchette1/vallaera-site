@@ -1,4 +1,4 @@
-﻿import { QuartzComponent, QuartzComponentConstructor } from "./types"
+import { QuartzComponent, QuartzComponentConstructor } from "./types"
 
 // Ported from the Obsidian Publish publish.js: swipe gestures for the phone
 // sidebar, and lazy-loading of images.
@@ -69,6 +69,26 @@ VallaeraScripts.afterDOMLoaded = `
   document.addEventListener("touchcancel", function () { tracking = false; }, { passive: true });
 })();
 
+// Sidebar: clicking anywhere on a folder bar toggles it (not just the word or arrow),
+// and tapping outside the phone drawer closes it.
+(function () {
+  document.addEventListener("click", function (e) {
+    var t = e.target;
+    if (!(t instanceof Element)) return;
+
+    var row = t.closest(".explorer-content .folder-container");
+    if (row && !t.closest("button") && !t.closest("a") && !t.closest("svg")) {
+      var btn = row.querySelector("button");
+      if (btn) { btn.click(); return; }
+    }
+
+    if (document.documentElement.classList.contains("mobile-no-scroll")) {
+      if (t.closest(".explorer-content, .sidebar.left > .flex-component, .mobile-explorer, .page-title")) return;
+      var toggle = document.querySelector(".explorer .mobile-explorer");
+      if (toggle) toggle.click();
+    }
+  });
+})();
 // Lazy-load images so big maps and handouts don't compete with the note text.
 (function () {
   var queued = false;
