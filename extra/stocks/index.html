@@ -26,7 +26,7 @@
       --up: #2e7d4f;
       --down: #a8322b;
       --hover: rgba(90, 60, 20, 0.07);
-      --paper: radial-gradient(ellipse at 50% -10%, #f7eed4 0%, #efe3c2 55%, #e3d3a6 100%);
+      --paper: radial-gradient(ellipse at 50% -10%, rgba(255, 250, 232, 0.55) 0%, rgba(255, 250, 232, 0) 62%);
     }
     :root[saved-theme="dark"] {
       --gold: #c9a24d;
@@ -41,10 +41,10 @@
       --up: #5cc08a;
       --down: #e0655b;
       --hover: rgba(233, 223, 198, 0.07);
-      --paper: radial-gradient(ellipse at 50% -10%, #2a2118 0%, #17130f 55%, #100d0a 100%);
+      --paper: radial-gradient(ellipse at 50% -10%, rgba(201, 162, 77, 0.06) 0%, rgba(201, 162, 77, 0) 62%);
     }
 
-    html, body { background: var(--bg); font-family: "EB Garamond", Georgia, "Times New Roman", serif; font-size: 18px; }
+    html, body { background: var(--paper) fixed, var(--bg); font-family: "EB Garamond", Georgia, "Times New Roman", serif; font-size: 18px; }
     .topbar { background: var(--panel); border-bottom: 1px solid var(--border); }
     .site-switcher-btn, .page-foot, .theme-switch { font-family: "Cinzel", Georgia, serif; }
     .site-switcher-btn { font-size: 1.05rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
