@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Market Admin</title>
+  <link rel="icon" href="/static/icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <script src="/assets/common.js"></script>
+  <link rel="stylesheet" href="/assets/common.css" />
+  <style>
+    :root {
+      --gold: #8a6a1f; --bg: #efe3c2; --panel: #f6ecd2; --panel-2: #ead9ab; --border: #b79a62; --text: #35261a; --muted: #7a6a50;
+      --accent: #7c1d2b; --accent-soft: rgba(124, 29, 43, 0.08); --up: #2e7d4f; --down: #a8322b; --hover: rgba(90, 60, 20, 0.07);
+      --paper: radial-gradient(ellipse at 50% -10%, #f7eed4 0%, #efe3c2 55%, #e3d3a6 100%);
+    }
+    :root[saved-theme="dark"] {
+      --gold: #c9a24d; --bg: #14110f; --panel: #1b1713; --panel-2: #241e17; --border: #4d4129; --text: #e9dfc6; --muted: #a69a80;
+      --accent: #e0b85c; --accent-soft: rgba(224, 184, 92, 0.1); --up: #5cc08a; --down: #e0655b; --hover: rgba(233, 223, 198, 0.07);
+      --paper: radial-gradient(ellipse at 50% -10%, #2a2118 0%, #17130f 55%, #100d0a 100%);
+    }
+    html, body { background: var(--paper) fixed, var(--bg); font-family: "EB Garamond", Georgia, serif; font-size: 18px; }
+    .topbar { background: var(--panel); border-bottom: 3px double var(--gold); }
+    .site-switcher-btn, .page-foot, .theme-switch { font-family: "Cinzel", Georgia, serif; }
+    .site-switcher-btn { font-size: 1.05rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+    .site-switcher-menu a { font-family: "Cinzel", Georgia, serif; font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; }
+    .theme-switch .switch, .theme-switch .knob { border-radius: 0; }
+    main { max-width: 760px; }
+
+    .masthead { text-align: center; margin: 1rem 0 1.75rem; }
+    .masthead h1 { display: block; border: none; margin: 0; padding: 0; font-family: "Cinzel", Georgia, serif; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; font-size: clamp(1.5rem, 5vw, 2.3rem); color: var(--gold); }
+    .masthead p { margin: 0.5rem 0 0; font-style: italic; color: var(--muted); }
+    .flourish { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 0.8rem auto; max-width: 480px; color: var(--gold); }
+    .flourish::before, .flourish::after { content: ""; flex: 1; height: 5px; border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold); }
+    .flourish i { width: 10px; height: 10px; background: var(--gold); transform: rotate(45deg); display: block; box-shadow: 0 0 0 3px var(--bg), 0 0 0 4px var(--gold); }
+
+    .frame { position: relative; margin-top: 1.75rem; padding: 1.4rem 1.6rem 1.6rem; background: var(--panel); border: 3px double var(--gold); }
+    .frame h2 { font-family: "Cinzel", Georgia, serif; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-size: 1.05rem; color: var(--gold); margin: 0 0 0.9rem; }
+    .frame p, .frame li { line-height: 1.55; }
+    .frame ol { margin: 0.5rem 0 1rem 1.2rem; padding: 0; }
+    .frame code { font-family: ui-monospace, Consolas, monospace; font-size: 0.85em; background: var(--panel-2); padding: 1px 5px; }
+
+    .field { display: grid; gap: 6px; margin-bottom: 1.15rem; }
+    .field > label, .field > .lab { font-family: "Cinzel", Georgia, serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+    input[type="text"], input[type="password"], input[type="number"], select, textarea {
+      font: inherit; color: var(--text); background: var(--bg); border: 1px solid var(--border); border-radius: 0; padding: 9px 12px; width: 100%;
+    }
+    textarea { min-height: 84px; resize: vertical; }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 2px var(--accent-soft); }
+
+    .chips { display: flex; flex-wrap: wrap; }
+    .chips label {
+      font-family: "Cinzel", Georgia, serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: none; color: var(--muted);
+      border: 1px solid var(--border); margin: 0 -1px -1px 0; padding: 8px 14px; cursor: pointer; user-select: none; background: none;
+    }
+    .chips label:hover { background: var(--hover); color: var(--text); }
+    .chips input { position: absolute; opacity: 0; pointer-events: none; }
+    .chips input:checked + span { color: var(--bg); }
+    .chips label:has(input:checked) { background: var(--gold); border-color: var(--gold); color: var(--bg); }
+    .chips label:has(input:focus-visible) { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .amount { display: flex; align-items: stretch; }
+    .amount input { border-right: none; }
+    .amount span { border: 1px solid var(--border); border-left: none; padding: 9px 12px; color: var(--muted); background: var(--panel-2); }
+
+    button.go {
+      font-family: "Cinzel", Georgia, serif; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.85rem;
+      color: var(--bg); background: var(--gold); border: 1px solid var(--gold); border-radius: 0; padding: 11px 26px; cursor: pointer;
+    }
+    button.go:disabled { opacity: 0.45; cursor: not-allowed; }
+    button.link { font: inherit; color: var(--accent); background: none; border: none; padding: 0; cursor: pointer; text-decoration: underline; }
+    .summary { font-style: italic; color: var(--muted); margin: 0 0 1rem; min-height: 1.5em; }
+    .msg { padding: 0.7rem 1rem; border: 1px solid var(--border); margin-bottom: 1rem; line-height: 1.5; }
+    .msg.ok { border-color: var(--up); }
+    .msg.err { border-color: var(--down); }
+    .hint { color: var(--muted); font-size: 0.92rem; margin: 0.3rem 0 0; }
+    .status { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+
+    table.recent { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    table.recent th { font-family: "Cinzel", Georgia, serif; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-align: left; padding: 6px 8px; border-bottom: 3px double var(--gold); }
+    table.recent td { padding: 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .up { color: var(--up); } .down { color: var(--down); }
+    [hidden] { display: none !important; }
+    @media (max-width: 600px) { .row { grid-template-columns: 1fr; } .frame { padding: 1.1rem 1rem 1.3rem; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="site-switcher">
+      <button class="site-switcher-btn" aria-haspopup="menu" aria-expanded="false">
+        <span>Market Admin</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </button>
+      <ul class="site-switcher-menu" role="menu" hidden>
+        <li><a role="menuitem" href="/">Vallaera Wiki</a></li>
+        <li><a role="menuitem" href="/stocks/">Vallaera Stocks</a></li>
+        <li><a role="menuitem" href="/feedback/">Feedback</a></li>
+      </ul>
+    </div>
+    <button class="theme-switch" aria-label="Toggle light and dark mode">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"></path></svg>
+      <span class="switch"><span class="knob"></span></span>
+    </button>
+  </header>
+
+  <main>
+    <div class="masthead">
+      <div class="flourish"><i></i></div>
+      <h1>Market Admin</h1>
+      <p>Stir the markets of Vallaera.</p>
+    </div>
+
+    <!-- Step 1: connect -->
+    <section class="frame" id="connect" hidden>
+      <h2>Connect your key</h2>
+      <p>To post events, this page needs a one-time GitHub access key. It is saved only in this browser, and only works for this one repository.</p>
+      <ol>
+        <li>On GitHub, open <b>Settings &rarr; Developer settings &rarr; Personal access tokens &rarr; Fine-grained tokens &rarr; Generate new token</b>.</li>
+        <li>Give it any name. Under <b>Repository access</b> choose <b>Only select repositories</b> and pick <code>vallaera-site</code>.</li>
+        <li>Under <b>Permissions &rarr; Repository permissions</b> set <b>Contents</b> to <b>Read and write</b>. Leave everything else alone.</li>
+        <li>Click <b>Generate token</b>, copy it, and paste it below.</li>
+      </ol>
+      <div id="connect-msg" class="msg" hidden></div>
+      <div class="field">
+        <label for="token">Access key</label>
+        <input id="token" type="password" autocomplete="off" placeholder="github_pat_..." />
+      </div>
+      <button class="go" id="save-token" type="button">Connect</button>
+    </section>
+
+    <!-- Step 2: post an event -->
+    <section class="frame" id="composer" hidden>
+      <div class="status" style="margin-bottom:1rem">
+        <span class="hint" style="margin:0">Connected to the exchange. <span id="repo-name"></span></span>
+        <button class="link" id="forget" type="button">Forget key</button>
+      </div>
+      <h2>Proclaim an event</h2>
+
+      <div id="msg" class="msg" hidden></div>
+
+      <form id="form" novalidate>
+        <div class="field">
+          <span class="lab">Companies affected</span>
+          <div class="chips" id="chips"></div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <span class="lab">Direction</span>
+            <div class="chips">
+              <label><input type="radio" name="dir" value="up" checked /><span>Rises</span></label>
+              <label><input type="radio" name="dir" value="down" /><span>Falls</span></label>
+            </div>
+          </div>
+          <div class="field">
+            <label for="amount">Amount</label>
+            <div class="amount"><input id="amount" type="number" min="0.5" max="100" step="0.5" value="10" inputmode="decimal" /><span>%</span></div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="speed">How fast</label>
+          <select id="speed">
+            <option value="1">Quickly (about 4 hours)</option>
+            <option value="4" selected>Gradually (about 16 hours)</option>
+            <option value="12">Slowly (about 2 days)</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="headline">Headline</label>
+          <input id="headline" type="text" maxlength="100" placeholder="Pirates raid the West Sea" />
+        </div>
+        <div class="field">
+          <label for="detail">Details <span style="text-transform:none;letter-spacing:0;font-family:inherit;font-weight:400">(optional)</span></label>
+          <textarea id="detail" maxlength="300" placeholder="Three cargo ships lost off the coast of Motu."></textarea>
+        </div>
+
+        <p class="summary" id="summary"></p>
+        <button class="go" id="submit" type="submit">Proclaim</button>
+        <p class="hint">Prices adjust at the next update, usually within about 2 minutes of posting.</p>
+      </form>
+    </section>
+
+    <section class="frame" id="recent-box" hidden>
+      <h2>Recent proclamations</h2>
+      <table class="recent"><thead><tr><th>Headline</th><th>Who</th><th>Move</th><th>Status</th></tr></thead><tbody id="recent"></tbody></table>
+    </section>
+  </main>
+
+  <footer class="page-foot">The Vallaera Exchange<sup style="font-size:.5em;vertical-align:super">TM</sup></footer>
+
+  <script>
+  (function () {
+    // ---- where events are saved ----
+    var OWNER = "LukeBlanchette1", REPO = "vallaera-site", BRANCH = "main";
+    var FILE = "extra/stocks/data/events.json";
+    var API = "https://api.github.com/repos/" + OWNER + "/" + REPO;
+    var KEY = "vallaeraAdminToken";
+
+    var $ = function (id) { return document.getElementById(id); };
+    var companies = [];
+
+    function getToken() { try { return localStorage.getItem(KEY) || ""; } catch (e) { return ""; } }
+    function setToken(v) { try { if (v) localStorage.setItem(KEY, v); else localStorage.removeItem(KEY); } catch (e) {} }
+
+    function show(id, on) { $(id).hidden = !on; }
+    function say(id, text, kind) { var m = $(id); m.hidden = false; m.className = "msg " + (kind || ""); m.textContent = text; }
+    function headers() {
+      return { Authorization: "Bearer " + getToken(), Accept: "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28" };
+    }
+    function b64decode(s) {
+      var bin = atob(s.replace(/\s/g, "")), bytes = new Uint8Array(bin.length);
+      for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      return new TextDecoder().decode(bytes);
+    }
+    function b64encode(str) {
+      var bytes = new TextEncoder().encode(str), bin = "";
+      for (var i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+      return btoa(bin);
+    }
+
+    // ---- connect / disconnect ----
+    function render() {
+      var has = !!getToken();
+      show("connect", !has); show("composer", has); show("recent-box", has);
+      if (has) { $("repo-name").textContent = OWNER + "/" + REPO; loadRecent(); }
+    }
+
+    $("save-token").addEventListener("click", function () {
+      var t = $("token").value.trim();
+      if (!t) { say("connect-msg", "Paste your access key first.", "err"); return; }
+      setToken(t);
+      var btn = $("save-token"); btn.disabled = true; btn.textContent = "Checking…";
+      fetch(API, { headers: headers() }).then(function (r) {
+        if (r.status === 401) throw new Error("GitHub did not accept that key. Check that you copied all of it.");
+        if (r.status === 404) throw new Error("That key cannot see the " + REPO + " repository. Make sure it was given access to it.");
+        if (!r.ok) throw new Error("GitHub said no (" + r.status + ").");
+        return r.json();
+      }).then(function (repo) {
+        if (repo.permissions && !repo.permissions.push) throw new Error("That key can only read. Set Contents to Read and write.");
+        $("token").value = ""; $("connect-msg").hidden = true; render();
+      }).catch(function (e) {
+        setToken(""); say("connect-msg", e.message || "Could not reach GitHub.", "err");
+      }).then(function () { btn.disabled = false; btn.textContent = "Connect"; });
+    });
+
+    $("forget").addEventListener("click", function () { setToken(""); $("msg").hidden = true; render(); });
+
+    // ---- the form ----
+    function buildChips() {
+      var box = $("chips"); box.innerHTML = "";
+      function chip(value, label) {
+        var l = document.createElement("label");
+        l.innerHTML = '<input type="checkbox"><span></span>';
+        l.querySelector("input").value = value; l.querySelector("span").textContent = label;
+        l.querySelector("input").addEventListener("change", function () { onChip(this); });
+        box.appendChild(l);
+      }
+      chip("ALL", "All companies");
+      companies.forEach(function (c) { chip(c.ticker, c.name); });
+    }
+    function onChip(changed) {
+      var inputs = $("chips").querySelectorAll("input");
+      if (changed.value === "ALL" && changed.checked) {
+        Array.prototype.forEach.call(inputs, function (i) { if (i.value !== "ALL") i.checked = false; });
+      } else if (changed.checked) {
+        inputs[0].checked = false;
+      }
+      summarize();
+    }
+    function selected() {
+      return Array.prototype.filter.call($("chips").querySelectorAll("input"), function (i) { return i.checked; }).map(function (i) { return i.value; });
+    }
+    function nameOf(t) { var c = companies.filter(function (x) { return x.ticker === t; })[0]; return c ? c.name : t; }
+    function currentChange() {
+      var a = parseFloat($("amount").value);
+      if (!isFinite(a) || a <= 0) return null;
+      var down = document.querySelector('input[name="dir"]:checked').value === "down";
+      return Math.round((down ? -a : a) * 100) / 100;
+    }
+    function summarize() {
+      var sel = selected(), ch = currentChange(), el = $("summary");
+      if (!sel.length || ch === null) { el.textContent = ""; return; }
+      var who = sel[0] === "ALL" ? "Every company" : sel.map(nameOf).join(", ");
+      var sp = $("speed").options[$("speed").selectedIndex].text.replace(/^(\w+) .*/, "$1").toLowerCase();
+      el.textContent = who + (sel[0] === "ALL" || sel.length > 1 ? " will " : " will ") + (ch > 0 ? "rise " : "fall ") + Math.abs(ch) + "%, " + sp + ".";
+    }
+    ["amount", "speed"].forEach(function (id) { $(id).addEventListener("input", summarize); });
+    Array.prototype.forEach.call(document.querySelectorAll('input[name="dir"]'), function (r) { r.addEventListener("change", summarize); });
+
+    $("form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var sel = selected(), ch = currentChange(), head = $("headline").value.trim();
+      if (!sel.length) return say("msg", "Choose at least one company.", "err");
+      if (ch === null || Math.abs(ch) > 100) return say("msg", "Enter an amount between 0.5 and 100 percent.", "err");
+      if (!head) return say("msg", "Write a headline for the news.", "err");
+
+      var event = {
+        id: "web-" + Date.now(),
+        tickers: sel,
+        change: ch,
+        headline: head,
+        detail: $("detail").value.trim(),
+        spread: parseInt($("speed").value, 10)
+      };
+      var btn = $("submit"); btn.disabled = true; btn.textContent = "Posting…";
+      save(event, 0).then(function () {
+        say("msg", "Proclaimed! The exchange will update in about 2 minutes. Refresh the Stocks page then.", "ok");
+        $("form").reset(); buildChips(); summarize(); loadRecent();
+      }).catch(function (err) {
+        say("msg", err.message || "Something went wrong. Nothing was changed.", "err");
+      }).then(function () { btn.disabled = false; btn.textContent = "Proclaim"; });
+    });
+
+    // read events.json, add the event, write it back (retry once if someone else wrote meanwhile)
+    function save(event, attempt) {
+      var url = API + "/contents/" + FILE + "?ref=" + BRANCH;
+      return fetch(url, { headers: headers(), cache: "no-store" }).then(function (r) {
+        if (r.status === 401 || r.status === 403) throw new Error("GitHub refused the key. Use “Forget key” and connect a new one.");
+        if (r.status === 404) throw new Error("The events file isn't published yet. Try again after the stocks section goes live.");
+        if (!r.ok) throw new Error("Could not read the events file (" + r.status + ").");
+        return r.json();
+      }).then(function (file) {
+        var list = [];
+        try { list = JSON.parse(b64decode(file.content)); } catch (e) { throw new Error("The events file looks damaged, so I left it alone."); }
+        if (!Array.isArray(list)) throw new Error("The events file looks damaged, so I left it alone.");
+        list.push(event);
+        return fetch(API + "/contents/" + FILE, {
+          method: "PUT",
+          headers: Object.assign({ "Content-Type": "application/json" }, headers()),
+          body: JSON.stringify({
+            message: "Market event: " + event.headline,
+            content: b64encode(JSON.stringify(list, null, 2) + "\n"),
+            sha: file.sha,
+            branch: BRANCH
+          })
+        });
+      }).then(function (r) {
+        if (r.status === 409 && attempt < 2) return save(event, attempt + 1);
+        if (!r.ok) throw new Error("Could not save the event (" + r.status + ").");
+      });
+    }
+
+    // ---- recent events ----
+    function loadRecent() {
+      if (!getToken()) return;
+      Promise.all([
+        fetch(API + "/contents/" + FILE + "?ref=" + BRANCH, { headers: headers(), cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; }),
+        fetch("../data/history.json", { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; })
+      ]).then(function (res) {
+        if (!res[0]) return;
+        var list = []; try { list = JSON.parse(b64decode(res[0].content)); } catch (e) {}
+        var applied = (res[1] && res[1].applied) || [];
+        var body = $("recent"); body.innerHTML = "";
+        list.slice(-8).reverse().forEach(function (ev) {
+          var tr = document.createElement("tr"), id = ev.id || "";
+          var who = [].concat(ev.tickers || ev.ticker || []).join(", ");
+          var done = applied.indexOf(id) !== -1;
+          tr.innerHTML = "<td></td><td></td><td></td><td></td>";
+          tr.children[0].textContent = ev.headline || "(no headline)";
+          tr.children[1].textContent = who === "ALL" ? "All" : who;
+          tr.children[2].textContent = (ev.change >= 0 ? "+" : "−") + Math.abs(ev.change) + "%";
+          tr.children[2].className = ev.change >= 0 ? "up" : "down";
+          tr.children[3].textContent = done ? "Applied" : "Waiting";
+          body.appendChild(tr);
+        });
+        if (!list.length) body.innerHTML = '<tr><td colspan="4" style="color:var(--muted);font-style:italic">Nothing yet.</td></tr>';
+      });
+    }
+
+    fetch("../data/companies.json", { cache: "no-cache" }).then(function (r) { return r.json(); }).then(function (c) {
+      companies = c; buildChips(); render();
+    }).catch(function () { render(); });
+  })();
+  </script>
+</body>
+</html>
