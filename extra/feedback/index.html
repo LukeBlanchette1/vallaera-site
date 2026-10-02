@@ -61,7 +61,7 @@
 
   <div class="overlay" id="overlay" hidden role="dialog" aria-modal="true" aria-label="Notice">
     <div class="popup">
-      <p>This isnt dont yet sry</p>
+      <p>This isnt done yet sry</p>
       <button type="button" id="ok">OK</button>
     </div>
   </div>
@@ -70,8 +70,10 @@
   (function () {
     var overlay = document.getElementById("overlay");
     function close() { overlay.hidden = true; }
-    document.getElementById("form").addEventListener("submit", function (e) {
+    var form = document.getElementById("form");
+    form.addEventListener("submit", function (e) {
       e.preventDefault();
+      form.elements.message.value = "";
       overlay.hidden = false;
       document.getElementById("ok").focus();
     });
