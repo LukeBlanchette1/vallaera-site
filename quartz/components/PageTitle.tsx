@@ -3,8 +3,9 @@ import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } fro
 import { classNames } from "../util/lang"
 import { i18n } from "../i18n"
 
-// The site title doubles as a switcher between the wiki, the stock market and the
-// feedback page. The extra pages live outside Quartz, so their links skip the SPA router.
+// The site title doubles as a menu. For now the Stocks, Calendar and Feedback entries do not
+// link anywhere: they open a plain "COMING SOON" box. To turn one back into a link, replace
+// its data-coming-soon attribute with the real href (and data-router-ignore).
 const PageTitle: QuartzComponent = ({ fileData, cfg, displayClass }: QuartzComponentProps) => {
   const title = cfg?.pageTitle ?? i18n(cfg.locale).propertyDefaults.title
   const baseDir = pathToRoot(fileData.slug!)
@@ -31,17 +32,17 @@ const PageTitle: QuartzComponent = ({ fileData, cfg, displayClass }: QuartzCompo
           </a>
         </li>
         <li>
-          <a role="menuitem" href="/stocks/" data-router-ignore>
+          <a role="menuitem" href="#" data-router-ignore data-coming-soon>
             Vallaera Stocks
           </a>
         </li>
         <li>
-          <a role="menuitem" href="/calendar/" data-router-ignore>
+          <a role="menuitem" href="#" data-router-ignore data-coming-soon>
             Vallaera Calendar
           </a>
         </li>
         <li>
-          <a role="menuitem" href="/feedback/" data-router-ignore>
+          <a role="menuitem" href="#" data-router-ignore data-coming-soon>
             Feedback
           </a>
         </li>
@@ -51,9 +52,34 @@ const PageTitle: QuartzComponent = ({ fileData, cfg, displayClass }: QuartzCompo
 }
 
 PageTitle.afterDOMLoaded = `
+function showComingSoon() {
+  if (document.getElementById("coming-soon")) return;
+  var o = document.createElement("div");
+  o.id = "coming-soon";
+  o.setAttribute("role", "dialog");
+  o.setAttribute("aria-label", "Coming soon");
+  var box = document.createElement("div");
+  box.className = "coming-soon-box";
+  var p = document.createElement("p");
+  p.textContent = "COMING SOON";
+  var ok = document.createElement("button");
+  ok.type = "button";
+  ok.textContent = "OK";
+  box.appendChild(p);
+  box.appendChild(ok);
+  o.appendChild(box);
+  document.body.appendChild(o);
+  function close() { o.remove(); document.removeEventListener("keydown", onKey); }
+  function onKey(ev) { if (ev.key === "Escape") close(); }
+  ok.addEventListener("click", close);
+  o.addEventListener("click", function (ev) { if (ev.target === o) close(); });
+  document.addEventListener("keydown", onKey);
+  ok.focus();
+}
 document.addEventListener("click", function (e) {
   var t = e.target;
   if (!(t instanceof Element)) return;
+  if (t.closest("[data-coming-soon]")) { e.preventDefault(); showComingSoon(); }
   var btn = t.closest(".site-switcher-btn");
   var all = document.querySelectorAll(".site-switcher");
   for (var i = 0; i < all.length; i++) {
@@ -81,6 +107,50 @@ PageTitle.css = `
 .page-title {
   margin: 0;
   position: relative;
+}
+
+#coming-soon {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2147483000;
+}
+
+.coming-soon-box {
+  background: var(--light);
+  color: var(--dark);
+  border: 1px solid var(--dark);
+  border-radius: 0;
+  padding: 1.75rem 3rem 1.5rem;
+  text-align: center;
+}
+
+.coming-soon-box p {
+  margin: 0 0 1.25rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: inherit;
+}
+
+.coming-soon-box button {
+  font: inherit;
+  background: none;
+  color: inherit;
+  border: 1px solid var(--dark);
+  border-radius: 0;
+  padding: 0.3rem 1.6rem;
+  cursor: pointer;
+}
+
+.coming-soon-box button:hover {
+  background: var(--dark);
+  color: var(--light);
 }
 `
 
