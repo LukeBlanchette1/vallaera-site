@@ -45,7 +45,7 @@
     }
 
     html, body { background: var(--paper) fixed, var(--bg); font-family: "EB Garamond", Georgia, "Times New Roman", serif; font-size: 18px; }
-    .topbar { background: var(--panel); border-bottom: 3px double var(--gold); }
+    .topbar { background: var(--panel); border-bottom: 1px solid var(--border); }
     .site-switcher-btn, .page-foot, .theme-switch { font-family: "Cinzel", Georgia, serif; }
     .site-switcher-btn { font-size: 1.05rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
     .site-switcher-menu a { font-family: "Cinzel", Georgia, serif; font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; }
@@ -54,16 +54,13 @@
     main { max-width: 1040px; }
 
     /* ---------- Masthead ---------- */
-    .masthead { text-align: center; margin: 1.25rem 0 2rem; }
+    .masthead { text-align: left; margin: 1.5rem 0 1.75rem; }
     .masthead h1 {
       display: block; border: none; margin: 0; padding: 0;
-      font-family: "Cinzel", Georgia, serif; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
-      font-size: clamp(1.7rem, 5vw, 2.9rem); line-height: 1.15; color: var(--gold);
+      font-family: "Cinzel", Georgia, serif; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase;
+      font-size: clamp(1.5rem, 4.5vw, 2.3rem); line-height: 1.15; color: var(--gold);
     }
     .masthead .tagline { margin: 0.5rem 0 0; font-style: italic; color: var(--muted); font-size: 1.1rem; }
-    .flourish { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 0.9rem auto; max-width: 560px; color: var(--gold); }
-    .flourish::before, .flourish::after { content: ""; flex: 1; height: 5px; border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold); }
-    .flourish i { width: 10px; height: 10px; background: var(--gold); transform: rotate(45deg); display: block; box-shadow: 0 0 0 3px var(--bg), 0 0 0 4px var(--gold); }
     #updated { display: block; margin-top: 0.4rem; font-size: 0.95rem; }
 
     .up { color: var(--up); }
@@ -72,8 +69,7 @@
       font-family: "Cinzel", Georgia, serif; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
       font-size: 1.15rem; color: var(--gold); margin: 0;
     }
-    h2.section { margin: 2.5rem 0 1rem; text-align: center; }
-    h2.section::before, h2.section::after { content: "\2756"; margin: 0 0.7rem; font-size: 0.8em; }
+    h2.section { margin: 2.5rem 0 0.9rem; }
 
     /* ---------- Ledger table ---------- */
     .ledger { width: 100%; border-collapse: collapse; border: 1px solid var(--border); background: var(--panel); }
@@ -96,10 +92,7 @@
     .spark { width: 130px; height: 34px; display: block; margin-left: auto; }
 
     /* ---------- Framed chart ---------- */
-    .frame { position: relative; margin-top: 2rem; padding: 1.4rem 1.6rem 1.6rem; background: var(--panel); border: 3px double var(--gold); }
-    .frame::before, .frame::after { content: ""; position: absolute; width: 14px; height: 14px; border: 2px solid var(--gold); background: var(--bg); transform: rotate(45deg); }
-    .frame::before { top: -9px; left: -9px; }
-    .frame::after { bottom: -9px; right: -9px; }
+    .frame { position: relative; margin-top: 2rem; padding: 1.4rem 1.6rem 1.6rem; background: var(--panel); border: 1px solid var(--border); }
     .frame-head { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 0.75rem; margin-bottom: 0.5rem; }
     .frame .sub { color: var(--muted); font-style: italic; margin-top: 4px; }
     .ranges { display: flex; }
@@ -126,7 +119,7 @@
     .stat b { font-size: 1.2rem; font-weight: 600; font-variant-numeric: lining-nums tabular-nums; }
 
     /* ---------- Proclamations ---------- */
-    .news { list-style: none; margin: 0; padding: 0; border-top: 3px double var(--gold); }
+    .news { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--border); }
     .news li { padding: 1rem 0.25rem; border-bottom: 1px solid var(--border); }
     .news .meta { display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: baseline; font-size: 0.95rem; color: var(--muted); font-style: italic; }
     .news .tag { font-style: normal; font-family: "Cinzel", Georgia, serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; }
@@ -169,9 +162,7 @@
 
   <main>
     <div class="masthead">
-      <div class="flourish"><i></i></div>
       <h1>The Vallaera Exchange</h1>
-      <div class="flourish"><i></i></div>
       <p class="tagline">placeholder text for now ig</p>
     </div>
 
@@ -315,7 +306,7 @@
       el("polygon", { points: pts.join(" ") + " " + x(s.length - 1).toFixed(1) + "," + (H - padB) + " " + x(0).toFixed(1) + "," + (H - padB), fill: color, opacity: 0.1 }, svg);
       el("polyline", { points: pts.join(" "), fill: "none", stroke: color, "stroke-width": 2, "stroke-linejoin": "round" }, svg);
 
-      var dot = el("rect", { width: 8, height: 8, fill: color, stroke: "var(--bg)", "stroke-width": 2, display: "none", transform: "rotate(45)" }, svg);
+      var dot = el("circle", { r: 4, fill: color, stroke: "var(--bg)", "stroke-width": 2, display: "none" }, svg);
       var rule = el("line", { y1: padT, y2: H - padB, stroke: "var(--gold)", "stroke-dasharray": "3 3", display: "none" }, svg);
 
       function show(clientX) {
@@ -323,9 +314,7 @@
         var i = Math.round((px - padL) / (W - padL - padR) * (s.length - 1));
         i = Math.max(0, Math.min(s.length - 1, i));
         var cx = x(i), cy = y(s[i].v);
-        dot.setAttribute("x", 0); dot.setAttribute("y", 0);
-        dot.setAttribute("transform", "translate(" + cx + "," + (cy - 5.6) + ") rotate(45)");
-        dot.setAttribute("display", "");
+        dot.setAttribute("cx", cx); dot.setAttribute("cy", cy); dot.setAttribute("display", "");
         rule.setAttribute("x1", cx); rule.setAttribute("x2", cx); rule.setAttribute("display", "");
         tip.innerHTML = "<b>" + fmt(s[i].v) + " gp</b><span>" + when(s[i].t) + "</span>";
         tip.style.display = "block";

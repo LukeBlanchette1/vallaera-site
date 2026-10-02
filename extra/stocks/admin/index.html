@@ -23,21 +23,21 @@
       --paper: radial-gradient(ellipse at 50% -10%, #2a2118 0%, #17130f 55%, #100d0a 100%);
     }
     html, body { background: var(--paper) fixed, var(--bg); font-family: "EB Garamond", Georgia, serif; font-size: 18px; }
-    .topbar { background: var(--panel); border-bottom: 3px double var(--gold); }
+    .topbar { background: var(--panel); border-bottom: 1px solid var(--border); }
     .site-switcher-btn, .page-foot, .theme-switch { font-family: "Cinzel", Georgia, serif; }
     .site-switcher-btn { font-size: 1.05rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
     .site-switcher-menu a { font-family: "Cinzel", Georgia, serif; font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; }
     .theme-switch .switch, .theme-switch .knob { border-radius: 0; }
     main { max-width: 760px; }
 
-    .masthead { text-align: center; margin: 1rem 0 1.75rem; }
+    .masthead { text-align: left; margin: 1.25rem 0 1.5rem; }
     .masthead h1 { display: block; border: none; margin: 0; padding: 0; font-family: "Cinzel", Georgia, serif; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; font-size: clamp(1.5rem, 5vw, 2.3rem); color: var(--gold); }
     .masthead p { margin: 0.5rem 0 0; font-style: italic; color: var(--muted); }
     .flourish { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 0.8rem auto; max-width: 480px; color: var(--gold); }
     .flourish::before, .flourish::after { content: ""; flex: 1; height: 5px; border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold); }
     .flourish i { width: 10px; height: 10px; background: var(--gold); transform: rotate(45deg); display: block; box-shadow: 0 0 0 3px var(--bg), 0 0 0 4px var(--gold); }
 
-    .frame { position: relative; margin-top: 1.75rem; padding: 1.4rem 1.6rem 1.6rem; background: var(--panel); border: 3px double var(--gold); }
+    .frame { position: relative; margin-top: 1.75rem; padding: 1.4rem 1.6rem 1.6rem; background: var(--panel); border: 1px solid var(--border); }
     .frame h2 { font-family: "Cinzel", Georgia, serif; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-size: 1.05rem; color: var(--gold); margin: 0 0 0.9rem; }
     .frame p, .frame li { line-height: 1.55; }
     .frame ol { margin: 0.5rem 0 1rem 1.2rem; padding: 0; }
@@ -109,7 +109,6 @@
 
   <main>
     <div class="masthead">
-      <div class="flourish"><i></i></div>
       <h1>Market Admin</h1>
       <p>YOU SHOULDNT BE HERE</p>
     </div>
