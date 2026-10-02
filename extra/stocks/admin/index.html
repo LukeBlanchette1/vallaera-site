@@ -489,7 +489,7 @@
       }).catch(function () { $("today-now").textContent = "Could not read today's date."; });
       fetch("/calendar/data/calendar.json", { cache: "no-store" }).then(function (r) { return r.json(); }).then(function (c) {
         var sel = $("ce-cat"); sel.innerHTML = "";
-        c.categories.forEach(function (k) { var o = document.createElement("option"); o.value = k.id; o.textContent = k.name; sel.appendChild(o); });
+        c.categories.forEach(function (k) { if (k.hidden) return; var o = document.createElement("option"); o.value = k.id; o.textContent = k.name; sel.appendChild(o); });
       }).catch(function () {});
     }
 
