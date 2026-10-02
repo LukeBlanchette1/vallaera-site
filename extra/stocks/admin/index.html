@@ -116,14 +116,6 @@
 
     <!-- Step 1: connect -->
     <section class="frame" id="connect" hidden>
-      <h2>Connect your key</h2>
-      <p>To post events, this page needs a one-time GitHub access key. It is saved only in this browser, and only works for this one repository.</p>
-      <ol>
-        <li>On GitHub, open <b>Settings &rarr; Developer settings &rarr; Personal access tokens &rarr; Fine-grained tokens &rarr; Generate new token</b>.</li>
-        <li>Give it any name. Under <b>Repository access</b> choose <b>Only select repositories</b> and pick <code>vallaera-site</code>.</li>
-        <li>Under <b>Permissions &rarr; Repository permissions</b> set <b>Contents</b> to <b>Read and write</b>. Leave everything else alone.</li>
-        <li>Click <b>Generate token</b>, copy it, and paste it below.</li>
-      </ol>
       <div id="connect-msg" class="msg" hidden></div>
       <div class="field">
         <label for="token">Access key</label>
@@ -176,7 +168,7 @@
 
         <div class="field">
           <label for="headline">Headline</label>
-          <input id="headline" type="text" maxlength="100" placeholder="Pirates raid the West Sea" />
+          <input id="headline" type="text" maxlength="100" placeholder="Zeldrak raids the Vykesian Sea" />
         </div>
         <div class="field">
           <label for="detail">Details <span style="text-transform:none;letter-spacing:0;font-family:inherit;font-weight:400">(optional)</span></label>
