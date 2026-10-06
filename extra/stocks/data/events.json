@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "id": "web-1791248723675",
+    "tickers": [
+      "ALL"
+    ],
+    "change": -5.2,
+    "headline": "Hurricane Sweeps Over Sea Routes",
+    "detail": "Tragedy",
+    "spread": 1
+  }
+]
