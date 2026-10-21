@@ -1,0 +1,16 @@
+*"The Parties to this Covenant affirm their desire to live in peace with all peoples and all governments...They are resolved to unite their efforts for collective defence and for the preservation of peace and security. They therefore agree to enter the Vozragul Covenant."*
+*- The Vozragul Covenant's Charter*
+
+The Vozragul Covenant is an international alliance founded in 554AD by the Kingdom of [[Séllur]], the Markessian Triumvirate, Archduchy of Zakurann, the Sovereign Dusk Counties, the Sacred Lands, and the Divine Empire of Haven. It has since added Portsdam, the Tsardom of Kliodoxa, and Al-Djazair as full members. The Covenant maintains the balance of power in Western Tavra, inspired by conflicts between Lethkar's Hold and the Markessian Triumvirate in the 550s along with the multiple wars with Séllur and the Sacred Lands.
+
+The Covenant is named after a Markessian diplomat, Testre-Li Vozragul who basically drafted the whole thing and pioneered the idea of a regional alliance in Tavra. The Covenant has done its job well in its lifespan. Covenant meetings happen once a year in alternating locations or are called in emergencies.
+
+The Firestarters have recently learned that The Vozragul Covenant has been convened by Archmage Paola the Sacred Lands to assess if Séllur should be placed into a formal state of emergency. If it is found that Séllur is in emergency, the members of the Covenant can be authorized to "help" Séllur through loans, military intervention, or other measures that would impede on Séllurian sovereignty. The covenant would need 2/3 members in agreement to successfully declare a state of emergency. 
+
+The Vozragul meeting will take place from the 13th to the 18th of Bundelreth. 
+
+The question of who will represent Séllur at this meeting is paramount. Normally the Queen appoints her representative but because she is asleep it falls to the Primrose Council. Who speaks for Séllur at this meeting is relevant because it sends a message of who literally speaks for the Kingdom. There are a lot of candidates being thrown around by the most relevant are
+- **[[Honora Jacquemond]]**: She is related to the Havani and Portsdamish people so she can be sure to sway Portsdam to her side. On top of that she represents continuity with House Jacquemond, especially because she was considered to be the heir. 
+- **[[Hubert Jacquemond]]**: For the same reasons as Honora but he is currently the Regent. Theoretically he has more claim to the throne and thus more cause to go.
+- **[[Henri Marleau]]**: Henri has become influential across the Kingdom. He is a good figurehead that people feel they can trust to represent their interests. Because his father was lowborn, many commoners believe he can sympathize with their plight. His strength and honor, along with experience on the council, can help. He also has many supporters on the council.
+- **[[Lucien Verfille]]:** Lucien is just the most qualified person to represent Séllur. as First Councillor he knows intimate details about the inner workings of Séllur and he is smart and charismatic enough. He is sure to deliver good results but people are anxious to have him gain even more influence across the kingdom.

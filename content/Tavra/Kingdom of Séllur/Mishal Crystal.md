@@ -1,0 +1,6 @@
+*"Truly a marvel to behold. While Mishal was a visionary yes... but this is nothing out of my reach. Now if I just cast with a little more gusto..."*
+*- Anubis Ramunset*
+
+Named after an ancient Thescryan biomancer, the Mishal crystals are stones imbued with a potent concentration of one school of magic. Also called Catalysts, these crystals transform the recipients body to become a sort of conductor of magic and achieve feats beyond their natural threshold. Once changed, their magic is drained and they can never be used again. 
+
+Mishal is long since dead but her crystals still pop up from time to time across Séllur and the Sacred Lands. These Mishal Crystals are very valuable, especially to magical item collectors. Their use is cautioned today because the safe techniques of application have been lost to history. Applying a crystal without precaution can result in the crystal overcharging the recipients body, insanity, or other side effects of heavily concentrated magic altering the creature's form. 
